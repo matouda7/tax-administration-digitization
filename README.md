@@ -10,11 +10,11 @@ The repository contains a complete set of documents that were created during the
 
 ## As-is analysis
 
-The As-is analysis describes the current state of the Tax administration process. To reveal and capture the state the OER analysis and DEMO Cooperation and Fact model is used. The results of the analysis are visible in the [as-is_analysis](https://github.com/matouda7/tax-administration-digitization/tree/main/as-is_analysis) directory.
+The As-is analysis describes the current state of the Tax administration process. To reveal and capture the state the OER analysis and DEMO Cooperation and Fact model is used. The results of the analysis are visible in the [as-is_analysis](https://github.com/matouda7/tax-administration-digitization/tree/main/as-is-analysis) directory.
 
 ## To-be analysis 
 
-The To-be analysis is used design and show the possible to-be solution of the process after the digitization is completed. The BPMN level 2 is used to capture the to-be state. The result of the analysis is shown in [to-be_anaylsis](https://github.com/matouda7/tax-administration-digitization/tree/main/to-be_analysis) directory. 
+The To-be analysis is used design and show the possible to-be solution of the process after the digitization is completed. The BPMN level 2 is used to capture the to-be state. The result of the analysis is shown in [to-be_anaylsis](https://github.com/matouda7/tax-administration-digitization/tree/main/to-be-analysis) directory. 
 
 ## Implementation
 
