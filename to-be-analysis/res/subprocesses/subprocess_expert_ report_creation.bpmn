@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0ajoevz" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <bpmn:collaboration id="Collaboration_1bcyxyq">
+    <bpmn:participant id="Participant_1fsfz03" name="Official decision management system" processRef="Process_0zf69ac" />
+    <bpmn:participant id="Participant_0uvcwyh" name="Expert" processRef="Process_1ca63ht" />
+    <bpmn:messageFlow id="Flow_0aqk8b0" sourceRef="Activity_0xyz43g" targetRef="Event_0vkthsl" />
+    <bpmn:messageFlow id="Flow_1nnu5df" sourceRef="Activity_1bvd4ja" targetRef="Activity_0xyz43g" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_0zf69ac" isExecutable="true">
+    <bpmn:userTask id="Activity_0xyz43g" name="Get expert report">
+      <bpmn:incoming>Flow_14autg5</bpmn:incoming>
+      <bpmn:outgoing>Flow_13zcgyj</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:startEvent id="Event_126d3rp" name="Start expert report creation process">
+      <bpmn:outgoing>Flow_14autg5</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0hpc9g4" name="Expert report is created">
+      <bpmn:incoming>Flow_13zcgyj</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_14autg5" sourceRef="Event_126d3rp" targetRef="Activity_0xyz43g" />
+    <bpmn:sequenceFlow id="Flow_13zcgyj" sourceRef="Activity_0xyz43g" targetRef="Event_0hpc9g4" />
+  </bpmn:process>
+  <bpmn:process id="Process_1ca63ht" isExecutable="false">
+    <bpmn:startEvent id="Event_0vkthsl" name="Expert report necessity received">
+      <bpmn:outgoing>Flow_1cd9i0c</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0ac4dcx" messageRef="Message_3vpqo8u" />
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0k5puzr" name="Expert report is saved">
+      <bpmn:incoming>Flow_0z8cfdt</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:manualTask id="Activity_1bvd4ja" name="Save expert report">
+      <bpmn:incoming>Flow_1ghf0of</bpmn:incoming>
+      <bpmn:outgoing>Flow_0z8cfdt</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Activity_132rvme" name="Create expert report">
+      <bpmn:incoming>Flow_0p125i9</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ghf0of</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Activity_0iqci3o" name="Obtain study information">
+      <bpmn:incoming>Flow_1cd9i0c</bpmn:incoming>
+      <bpmn:outgoing>Flow_0p125i9</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_1cd9i0c" sourceRef="Event_0vkthsl" targetRef="Activity_0iqci3o" />
+    <bpmn:sequenceFlow id="Flow_0z8cfdt" sourceRef="Activity_1bvd4ja" targetRef="Event_0k5puzr" />
+    <bpmn:sequenceFlow id="Flow_1ghf0of" sourceRef="Activity_132rvme" targetRef="Activity_1bvd4ja" />
+    <bpmn:sequenceFlow id="Flow_0p125i9" sourceRef="Activity_0iqci3o" targetRef="Activity_132rvme" />
+  </bpmn:process>
+  <bpmn:message id="Message_3vpqo8u" name="=changeOfCircumstances">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=&#34;changeOfCircumstancesMessage&#34;" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1bcyxyq">
+      <bpmndi:BPMNShape id="Participant_0uvcwyh_di" bpmnElement="Participant_0uvcwyh" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="630" height="160" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0hog9ux_di" bpmnElement="Event_0vkthsl">
+        <dc:Bounds x="222" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="208" y="100" width="64" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0k5puzr_di" bpmnElement="Event_0k5puzr">
+        <dc:Bounds x="702" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="682" y="185" width="76" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ox7ko4_di" bpmnElement="Activity_1bvd4ja">
+        <dc:Bounds x="570" y="120" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1a1u4i4_di" bpmnElement="Activity_132rvme">
+        <dc:Bounds x="430" y="120" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0tmbptv_di" bpmnElement="Activity_0iqci3o">
+        <dc:Bounds x="300" y="120" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1cd9i0c_di" bpmnElement="Flow_1cd9i0c">
+        <di:waypoint x="258" y="160" />
+        <di:waypoint x="300" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0z8cfdt_di" bpmnElement="Flow_0z8cfdt">
+        <di:waypoint x="670" y="160" />
+        <di:waypoint x="702" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ghf0of_di" bpmnElement="Flow_1ghf0of">
+        <di:waypoint x="530" y="160" />
+        <di:waypoint x="570" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0p125i9_di" bpmnElement="Flow_0p125i9">
+        <di:waypoint x="400" y="160" />
+        <di:waypoint x="430" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_1fsfz03_di" bpmnElement="Participant_1fsfz03" isHorizontal="true">
+        <dc:Bounds x="160" y="280" width="630" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1lqxlej_di" bpmnElement="Activity_0xyz43g">
+        <dc:Bounds x="440" y="360" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_126d3rp_di" bpmnElement="Event_126d3rp">
+        <dc:Bounds x="232" y="382" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="215" y="425" width="71" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0hpc9g4_di" bpmnElement="Event_0hpc9g4">
+        <dc:Bounds x="702" y="382" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="682" y="425" width="76" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_14autg5_di" bpmnElement="Flow_14autg5">
+        <di:waypoint x="268" y="400" />
+        <di:waypoint x="440" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13zcgyj_di" bpmnElement="Flow_13zcgyj">
+        <di:waypoint x="540" y="400" />
+        <di:waypoint x="702" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0aqk8b0_di" bpmnElement="Flow_0aqk8b0">
+        <di:waypoint x="460" y="360" />
+        <di:waypoint x="460" y="260" />
+        <di:waypoint x="240" y="260" />
+        <di:waypoint x="240" y="178" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1nnu5df_di" bpmnElement="Flow_1nnu5df">
+        <di:waypoint x="620" y="200" />
+        <di:waypoint x="620" y="260" />
+        <di:waypoint x="510" y="260" />
+        <di:waypoint x="510" y="360" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

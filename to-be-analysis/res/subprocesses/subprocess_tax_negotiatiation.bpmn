@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0swq6dj" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <bpmn:collaboration id="Collaboration_0b19wvm">
+    <bpmn:participant id="Participant_10ox5ec" name="Tax negotiatior" processRef="Process_0lgarij" />
+    <bpmn:participant id="Participant_0qsb6ex" name="Official decision management system" processRef="Process_0tfcqui" />
+    <bpmn:participant id="Participant_086krsq" name="Tax subject" />
+    <bpmn:messageFlow id="Flow_1twmnm2" sourceRef="Activity_0xuezaw" targetRef="Event_18st6l2" />
+    <bpmn:messageFlow id="Flow_0oupv32" sourceRef="Activity_0gneogp" targetRef="Activity_0xuezaw" />
+    <bpmn:messageFlow id="Flow_0opkodf" sourceRef="Activity_0ec8p62" targetRef="Participant_086krsq" />
+    <bpmn:messageFlow id="Flow_0ol7jjs" sourceRef="Participant_086krsq" targetRef="Activity_0ec8p62" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_0lgarij" isExecutable="true">
+    <bpmn:startEvent id="Event_18st6l2" name="Tax negoptiation necessity recieved">
+      <bpmn:outgoing>Flow_03prqt6</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_19f0fc6" messageRef="Message_3vpqo8u" />
+    </bpmn:startEvent>
+    <bpmn:manualTask id="Activity_0ec8p62" name="Negotiate tax with tax subject">
+      <bpmn:incoming>Flow_03prqt6</bpmn:incoming>
+      <bpmn:outgoing>Flow_0818gix</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Activity_0gneogp" name="Save negotiated tax">
+      <bpmn:incoming>Flow_0818gix</bpmn:incoming>
+      <bpmn:outgoing>Flow_006y8n4</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:endEvent id="Event_0cfmfvt" name="Negotiated tax is saved">
+      <bpmn:incoming>Flow_006y8n4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_03prqt6" sourceRef="Event_18st6l2" targetRef="Activity_0ec8p62" />
+    <bpmn:sequenceFlow id="Flow_0818gix" sourceRef="Activity_0ec8p62" targetRef="Activity_0gneogp" />
+    <bpmn:sequenceFlow id="Flow_006y8n4" sourceRef="Activity_0gneogp" targetRef="Event_0cfmfvt" />
+  </bpmn:process>
+  <bpmn:message id="Message_3vpqo8u" name="=changeOfCircumstances">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=&#34;changeOfCircumstancesMessage&#34;" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:process id="Process_0tfcqui" isExecutable="false">
+    <bpmn:startEvent id="Event_1uhshvd" name="Start tax negotiation process">
+      <bpmn:outgoing>Flow_1ujy0lh</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_0xuezaw" name="Get negotiated tax">
+      <bpmn:incoming>Flow_1ujy0lh</bpmn:incoming>
+      <bpmn:outgoing>Flow_11d1q98</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_1acbpdt" name="Tax is negotiated">
+      <bpmn:incoming>Flow_11d1q98</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1ujy0lh" sourceRef="Event_1uhshvd" targetRef="Activity_0xuezaw" />
+    <bpmn:sequenceFlow id="Flow_11d1q98" sourceRef="Activity_0xuezaw" targetRef="Event_1acbpdt" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0b19wvm">
+      <bpmndi:BPMNShape id="Participant_10ox5ec_di" bpmnElement="Participant_10ox5ec" isHorizontal="true">
+        <dc:Bounds x="160" y="180" width="440" height="160" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_11z4iqg_di" bpmnElement="Event_18st6l2">
+        <dc:Bounds x="222" y="242" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="199" y="192" width="81" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_12unvgp_di" bpmnElement="Activity_0ec8p62">
+        <dc:Bounds x="280" y="220" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0yxnm9x_di" bpmnElement="Activity_0gneogp">
+        <dc:Bounds x="410" y="220" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0cfmfvt_di" bpmnElement="Event_0cfmfvt">
+        <dc:Bounds x="539" y="242" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="514" y="286" width="83" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_03prqt6_di" bpmnElement="Flow_03prqt6">
+        <di:waypoint x="258" y="260" />
+        <di:waypoint x="280" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0818gix_di" bpmnElement="Flow_0818gix">
+        <di:waypoint x="380" y="260" />
+        <di:waypoint x="410" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_006y8n4_di" bpmnElement="Flow_006y8n4">
+        <di:waypoint x="510" y="260" />
+        <di:waypoint x="539" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_0yrb2gq_di" bpmnElement="Participant_086krsq" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="440" height="60" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_0qsb6ex_di" bpmnElement="Participant_0qsb6ex" isHorizontal="true">
+        <dc:Bounds x="160" y="380" width="440" height="190" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1uhshvd_di" bpmnElement="Event_1uhshvd">
+        <dc:Bounds x="258" y="452" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="249" y="495" width="54" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vkpmh1_di" bpmnElement="Activity_0xuezaw">
+        <dc:Bounds x="328" y="430" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1acbpdt_di" bpmnElement="Event_1acbpdt">
+        <dc:Bounds x="460" y="452" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="437" y="495" width="83" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1ujy0lh_di" bpmnElement="Flow_1ujy0lh">
+        <di:waypoint x="294" y="470" />
+        <di:waypoint x="328" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11d1q98_di" bpmnElement="Flow_11d1q98">
+        <di:waypoint x="428" y="470" />
+        <di:waypoint x="460" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1twmnm2_di" bpmnElement="Flow_1twmnm2">
+        <di:waypoint x="356" y="430" />
+        <di:waypoint x="356" y="360" />
+        <di:waypoint x="240" y="360" />
+        <di:waypoint x="240" y="278" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0oupv32_di" bpmnElement="Flow_0oupv32">
+        <di:waypoint x="460" y="300" />
+        <di:waypoint x="460" y="360" />
+        <di:waypoint x="406" y="360" />
+        <di:waypoint x="406" y="430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0opkodf_di" bpmnElement="Flow_0opkodf">
+        <di:waypoint x="310" y="220" />
+        <di:waypoint x="310" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ol7jjs_di" bpmnElement="Flow_0ol7jjs">
+        <di:waypoint x="350" y="140" />
+        <di:waypoint x="350" y="220" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
