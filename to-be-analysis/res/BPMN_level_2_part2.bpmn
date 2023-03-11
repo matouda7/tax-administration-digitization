@@ -81,7 +81,7 @@
       <bpmn:incoming>Flow_1pbd0b6</bpmn:incoming>
       <bpmn:outgoing>Flow_1qkqbiy</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:intermediateCatchEvent id="Event_17i0wb3" name="Main Path">
+    <bpmn:intermediateCatchEvent id="Event_17i0wb3" name="Main path">
       <bpmn:outgoing>Flow_05s5vmw</bpmn:outgoing>
       <bpmn:linkEventDefinition id="LinkEventDefinition_02r5wqw" name="" />
     </bpmn:intermediateCatchEvent>
@@ -246,7 +246,7 @@
       <bpmndi:BPMNShape id="BPMNShape_0ouvtdl" bpmnElement="Event_17i0wb3">
         <dc:Bounds x="182" y="642" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="175" y="693" width="50" height="14" />
+          <dc:Bounds x="176" y="693" width="49" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0iuwol1" bpmnElement="Event_0d72tm1">
@@ -267,6 +267,10 @@
       <bpmndi:BPMNShape id="BPMNShape_1qdj13t" bpmnElement="Gateway_0x25u41" isMarkerVisible="true">
         <dc:Bounds x="525" y="805" width="50" height="50" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_05r223s" bpmnElement="Activity_19pw8nc" isExpanded="false">
+        <dc:Bounds x="430" y="870" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1tgs98d_di" bpmnElement="Activity_1kca7ys">
         <dc:Bounds x="610" y="910" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -275,10 +279,6 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="752" y="975" width="77" height="40" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_05r223s" bpmnElement="Activity_19pw8nc" isExpanded="false">
-        <dc:Bounds x="430" y="870" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1gofcwm_di" bpmnElement="Event_0ods06c">
         <dc:Bounds x="512" y="932" width="36" height="36" />
