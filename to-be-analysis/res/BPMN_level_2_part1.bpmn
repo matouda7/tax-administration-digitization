@@ -59,7 +59,7 @@
       <bpmn:outgoing>Flow_1vwlahs</bpmn:outgoing>
       <bpmn:outgoing>Flow_0qu3yny</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:exclusiveGateway id="Gateway_0b88nc8" name="Is testimony needed">
+    <bpmn:exclusiveGateway id="Gateway_0b88nc8" name="Is testimony needed?">
       <bpmn:incoming>Flow_0magwau</bpmn:incoming>
       <bpmn:outgoing>Flow_00n3pjs</bpmn:outgoing>
       <bpmn:outgoing>Flow_0q5jqen</bpmn:outgoing>
@@ -458,7 +458,7 @@
       <bpmndi:BPMNShape id="Gateway_0b88nc8_di" bpmnElement="Gateway_0b88nc8" isMarkerVisible="true">
         <dc:Bounds x="1015" y="655" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1010" y="714.5" width="60" height="27" />
+          <dc:Bounds x="1010" y="715" width="60" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00ocpbz_di" bpmnElement="Activity_00ocpbz" isExpanded="false">

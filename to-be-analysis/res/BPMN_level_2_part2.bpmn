@@ -48,7 +48,7 @@
       <bpmn:incoming>Flow_117sg1d</bpmn:incoming>
       <bpmn:outgoing>Flow_1newl7x</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:exclusiveGateway id="Gateway_1235mkg" name="Are final decision values correct and sufficient">
+    <bpmn:exclusiveGateway id="Gateway_1235mkg" name="Are final decision values correct and sufficient?">
       <bpmn:incoming>Flow_1newl7x</bpmn:incoming>
       <bpmn:outgoing>Flow_1pbd0b6</bpmn:outgoing>
       <bpmn:outgoing>Flow_06k2w7p</bpmn:outgoing>
@@ -93,7 +93,7 @@
       <bpmn:incoming>Flow_0z02rw1</bpmn:incoming>
       <bpmn:outgoing>Flow_0f2k2bq</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:exclusiveGateway id="Gateway_0bpong8" name="Are information sufficient?">
+    <bpmn:exclusiveGateway id="Gateway_0bpong8" name="Is added information sufficient?">
       <bpmn:incoming>Flow_0f2k2bq</bpmn:incoming>
       <bpmn:outgoing>Flow_0efiag5</bpmn:outgoing>
       <bpmn:outgoing>Flow_0mzrkxs</bpmn:outgoing>
@@ -261,7 +261,7 @@
       <bpmndi:BPMNShape id="BPMNShape_0lh7hpe" bpmnElement="Gateway_0bpong8" isMarkerVisible="true">
         <dc:Bounds x="385" y="805" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="372" y="776" width="75" height="27" />
+          <dc:Bounds x="382" y="760" width="55" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_1qdj13t" bpmnElement="Gateway_0x25u41" isMarkerVisible="true">
