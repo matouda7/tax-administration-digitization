@@ -1,0 +1,76 @@
+{
+  "components": [
+    {
+      "text": "# Proceedings participant information\nFill in the proceeding participant information.",
+      "type": "text",
+      "id": "Field_0mi75c1"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Participant information",
+      "type": "text",
+      "id": "Field_0hrk4v9"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_13n6761",
+      "key": "participantName",
+      "disabled": true
+    },
+    {
+      "label": "Address: ",
+      "type": "textfield",
+      "id": "Field_0rmdsjl",
+      "key": "participantAddress",
+      "description": "Fill in participant's address (E.g. Dietzova 529/8, Prague 6, Czech Republic)."
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1bp6j9k",
+      "key": "participantEmail",
+      "description": "Fill in participant's e-mail (E.g.  example@example.com).",
+      "validate": {
+        "validationType": "email"
+      }
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_10uggg5",
+      "key": "participantPhone",
+      "description": "Fill in participant's phone number (E.g.  +420xxxxxxxxx).",
+      "validate": {
+        "validationType": "phone"
+      }
+    },
+    {
+      "text": "### Reasons of proceedings participation",
+      "type": "text",
+      "id": "Field_1nnqjyd"
+    },
+    {
+      "label": "Matter of participation:",
+      "type": "textarea",
+      "id": "Field_096uj1f",
+      "key": "matterOfParticipation",
+      "description": "Fill in the reasons, why person participates the proceedings."
+    }
+  ],
+  "type": "default",
+  "id": "Form_0kd4bww",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

@@ -1,0 +1,196 @@
+{
+  "components": [
+    {
+      "text": "#Creation of official decision\n\nCreate official decision based on the followed information.",
+      "type": "text",
+      "id": "Field_01trt9c"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Tax subject information",
+      "type": "text",
+      "id": "Field_06jzpul"
+    },
+    {
+      "label": "Person:",
+      "type": "textfield",
+      "id": "Field_03x57lq",
+      "key": "personName",
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_0gb02g3",
+      "key": "personAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_0ncraut",
+      "key": "personEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0msrxj2",
+      "key": "personPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Presented information",
+      "type": "text",
+      "id": "Field_0gcinvq"
+    },
+    {
+      "label": "Additional information:",
+      "type": "textarea",
+      "id": "Field_0mzkte6",
+      "key": "additionalInformation",
+      "disabled": true
+    },
+    {
+      "label": "Presented facts:",
+      "type": "textarea",
+      "id": "Field_0rn5d2k",
+      "key": "presentedFacts",
+      "disabled": true
+    },
+    {
+      "text": "###Testimony information",
+      "type": "text",
+      "id": "Field_0u5g4fv",
+      "conditional": {
+        "hide": "=requiredTestimony = false"
+      }
+    },
+    {
+      "label": "Testimonies:",
+      "type": "textarea",
+      "id": "Field_1sl171i",
+      "key": "testimonies",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredTestimony = false"
+      }
+    },
+    {
+      "text": "### Expert report",
+      "type": "text",
+      "id": "Field_0ezs3ps",
+      "conditional": {
+        "hide": "=requiredExpertReport = false"
+      }
+    },
+    {
+      "label": "Expert report:",
+      "type": "textarea",
+      "id": "Field_0n39q37",
+      "key": "expertReport",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredExpertReport = false"
+      }
+    },
+    {
+      "text": "### Special records",
+      "type": "text",
+      "id": "Field_14fms4l",
+      "conditional": {
+        "hide": "=requiredSpecialRecords = false"
+      }
+    },
+    {
+      "label": "Special records:",
+      "type": "textarea",
+      "id": "Field_1ih3lzw",
+      "key": "specialRecords",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredSpecialRecords = false"
+      }
+    },
+    {
+      "text": "### Proceedings participant contributions",
+      "type": "text",
+      "id": "Field_0o6jqnp",
+      "conditional": {
+        "hide": "=requiredThirdPersonParticipation = false"
+      }
+    },
+    {
+      "label": "Proceedings participant contributions:",
+      "type": "textarea",
+      "id": "Field_096uj1f",
+      "key": "participantContributions",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredThirdPersonParticipation = false"
+      }
+    },
+    {
+      "text": "### Negotiated tax",
+      "type": "text",
+      "id": "Field_1uzezla",
+      "conditional": {
+        "hide": "=requiredTaxNegotiation = false"
+      }
+    },
+    {
+      "label": "Negotiated tax value (in CZK):",
+      "type": "textfield",
+      "id": "Field_0i6qiol",
+      "key": "negotiatedTaxValue",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredTaxNegotiation = false"
+      }
+    },
+    {
+      "label": "Negotiated tax justification:",
+      "type": "textarea",
+      "id": "Field_0l5z83i",
+      "key": "negotiatedTaxJustification",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredTaxNegotiation = false"
+      }
+    },
+    {
+      "text": "# Decision creation\n\nDetermine final amount of tax to be paid and write down the justification. ",
+      "type": "text",
+      "id": "Field_031pk4y"
+    },
+    {
+      "label": "Tax amount:",
+      "type": "textfield",
+      "id": "Field_1m06wiv",
+      "key": "taxAmount",
+      "description": "Fill in the decided amount of tax (in CZK)."
+    },
+    {
+      "label": "Justification:",
+      "type": "textarea",
+      "id": "Field_1h81bnu",
+      "key": "taxJustification",
+      "description": "Fill n the justification for the final amount of tax."
+    }
+  ],
+  "type": "default",
+  "id": "Form_0zy1s3h",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

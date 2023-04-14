@@ -1,0 +1,32 @@
+{
+  "components": [
+    {
+      "text": "# Additional information\n\nInsert additional information about the person and process significant to the creation of official decision",
+      "type": "text",
+      "id": "Field_1rc0pkw"
+    },
+    {
+      "label": "Official decision id:",
+      "type": "textfield",
+      "id": "Field_01quix0",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "label": "Additional information:",
+      "type": "textarea",
+      "id": "Field_0cz85gb",
+      "key": "additionalInformation",
+      "description": "Add additional information about the person and process."
+    }
+  ],
+  "type": "default",
+  "id": "form_save_additional_information",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

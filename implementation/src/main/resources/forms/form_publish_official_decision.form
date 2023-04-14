@@ -1,0 +1,32 @@
+{
+  "components": [
+    {
+      "text": "# Publish official decision\n\nPublish created official decision. Send decision to tax subject.",
+      "type": "text",
+      "id": "Field_1nq4lzg"
+    },
+    {
+      "label": "Official decision id:",
+      "type": "textfield",
+      "id": "Field_01quix0",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "label": "Path to the generated official decision:",
+      "type": "textfield",
+      "id": "Field_0ie42oj",
+      "key": "decisionFileName",
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "Form_1xc0w82",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

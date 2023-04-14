@@ -1,0 +1,87 @@
+{
+  "components": [
+    {
+      "text": "# Save testimony information\n\nFill in the information about witness and the matter of testimony",
+      "type": "text",
+      "id": "Field_03f7911"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Witness information",
+      "type": "text",
+      "id": "Field_1o32j3b"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_1w8vha0",
+      "key": "witnessName",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_1ixxlx2",
+      "key": "witnessAddress",
+      "description": "Fill in the witness address (E.g. Dietzova 529/8, Prague 6, Czech Republic).",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1mbmmq8",
+      "key": "witnessEmail",
+      "description": "Fill in the witness e-mail (E.g.  example@example.com).",
+      "validate": {
+        "required": true,
+        "validationType": "email"
+      }
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0npgdi9",
+      "key": "witnessPhone",
+      "description": "Fill in the witness phone number (E.g.  +420xxxxxxxxx).",
+      "validate": {
+        "required": true,
+        "validationType": "phone"
+      }
+    },
+    {
+      "text": "### Reasons of testimony creation",
+      "type": "text",
+      "id": "Field_12enrng"
+    },
+    {
+      "label": "Matter of testimony:",
+      "type": "textarea",
+      "id": "Field_0rgf3kg",
+      "key": "matterOfTestimony",
+      "description": "Fill in the matter of witness testimony. ",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_0t8da3q",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

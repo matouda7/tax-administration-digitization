@@ -1,0 +1,32 @@
+{
+  "components": [
+    {
+      "text": "# Presented facts\n\nInsert facts presented by tax subject.",
+      "type": "text",
+      "id": "Field_1skftbg"
+    },
+    {
+      "label": "Official decision id:",
+      "type": "textfield",
+      "id": "Field_01quix0",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "label": "Presented facts:",
+      "type": "textarea",
+      "id": "Field_15emrlg",
+      "key": "presentedFacts",
+      "description": "Fill in the presented facts."
+    }
+  ],
+  "type": "default",
+  "id": "form_get_facts",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

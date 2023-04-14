@@ -1,0 +1,136 @@
+{
+  "components": [
+    {
+      "text": "# Facts sufficiency\n\nCheck actual information and decide, which other steps are needed to create official decision.",
+      "type": "text",
+      "id": "Field_044rd82"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Tax subject information\n",
+      "type": "text",
+      "id": "Field_0mjvsd7"
+    },
+    {
+      "label": "Person:",
+      "type": "textfield",
+      "id": "Field_03x57lq",
+      "key": "personName",
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_1ixxlx2",
+      "key": "personAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1mbmmq8",
+      "key": "personEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0npgdi9",
+      "key": "personPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Presented information",
+      "type": "text",
+      "id": "Field_0r3du38"
+    },
+    {
+      "label": "Additional information:",
+      "type": "textarea",
+      "id": "Field_1fazwtl",
+      "key": "additionalInformation",
+      "disabled": true
+    },
+    {
+      "label": "Presented facts:",
+      "type": "textarea",
+      "id": "Field_0rn5d2k",
+      "key": "presentedFacts",
+      "disabled": true
+    },
+    {
+      "text": "## Additional steps\n\nMark required additional steps, sufficient to official decision creation.",
+      "type": "text",
+      "id": "Field_1ap6ox0"
+    },
+    {
+      "label": "Expert report",
+      "type": "checkbox",
+      "id": "Field_1cemrsr",
+      "key": "requiredExpertReport",
+      "description": "Check if expert report is required."
+    },
+    {
+      "label": "Testimony",
+      "type": "checkbox",
+      "id": "Field_01ieiuz",
+      "key": "requiredTestimony",
+      "description": "Check if witness testimony is required."
+    },
+    {
+      "label": "Witnesses names:",
+      "type": "textfield",
+      "id": "Field_01ar34a",
+      "key": "witnessNames",
+      "conditional": {
+        "hide": "=requiredTestimony = false"
+      },
+      "description": "Fill in the names of witnesses separated with comma (E. g. Jan Novák, Jan Dietz, Alicia Perinfroma).",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Third person participation",
+      "type": "checkbox",
+      "id": "Field_1kfo3uw",
+      "key": "requiredThirdPersonParticipation",
+      "description": "Check if participation of third person is required."
+    },
+    {
+      "label": "Participants names:",
+      "type": "textfield",
+      "id": "Field_0mec4kr",
+      "key": "participantNames",
+      "description": "Fill in the names of participants separated with comma (E. g. Jan Novák, Jan Dietz, Alicia Perinfroma).",
+      "conditional": {
+        "hide": "=requiredThirdPersonParticipation = false"
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Special records",
+      "type": "checkbox",
+      "id": "Field_0k1zffl",
+      "key": "requiredSpecialRecords",
+      "description": "Check if special records are required."
+    }
+  ],
+  "type": "default",
+  "id": "form_check_facts_sufficiency",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

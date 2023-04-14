@@ -1,0 +1,48 @@
+{
+  "components": [
+    {
+      "text": "# Validation of presented facts\n\nValidate facts presented by tax subject.",
+      "type": "text",
+      "id": "Field_1skftbg"
+    },
+    {
+      "label": "Official decision id:",
+      "type": "textfield",
+      "id": "Field_01quix0",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "label": "Additional information:",
+      "type": "textarea",
+      "id": "Field_1809rdc",
+      "key": "additionalInformation",
+      "disabled": true
+    },
+    {
+      "label": "Presented facts:",
+      "type": "textarea",
+      "id": "Field_0zb8ntz",
+      "key": "presentedFacts",
+      "properties": {},
+      "disabled": true
+    },
+    {
+      "label": "Presented facts are correct",
+      "type": "checkbox",
+      "id": "Field_067k4t3",
+      "key": "correctPresentedFacts",
+      "description": "Check if all presented facts presented by tax subject are valid and correct.",
+      "defaultValue": true
+    }
+  ],
+  "type": "default",
+  "id": "form_get_facts",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

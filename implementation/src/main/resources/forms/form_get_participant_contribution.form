@@ -1,0 +1,70 @@
+{
+  "components": [
+    {
+      "text": "# Proceedings participant contribution\n\nFill in the contribution of participant.\n\n###Participant information",
+      "type": "text",
+      "id": "Field_0mi75c1"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_13n6761",
+      "key": "participantName",
+      "disabled": true
+    },
+    {
+      "label": "Address: ",
+      "type": "textfield",
+      "id": "Field_0rmdsjl",
+      "key": "participantAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1bp6j9k",
+      "key": "participantEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_10uggg5",
+      "key": "participantPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Reasons of proceedings participation",
+      "type": "text",
+      "id": "Field_1nnqjkd"
+    },
+    {
+      "label": "Matter of participation:",
+      "type": "textarea",
+      "id": "Field_096uj1k",
+      "key": "matterOfParticipation",
+      "disabled": true
+    },
+    {
+      "text": "### Participation contribution",
+      "type": "text",
+      "id": "Field_1nnqjyd"
+    },
+    {
+      "label": "Contribution:",
+      "type": "textarea",
+      "id": "Field_096uj1f",
+      "key": "participantContribution",
+      "description": "Fill in the contribution of participant."
+    }
+  ],
+  "type": "default",
+  "id": "Form_0kd4bww",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

@@ -1,0 +1,71 @@
+{
+  "components": [
+    {
+      "text": "# Assess entitlement to compensation\n\n###Participant information:",
+      "type": "text",
+      "id": "Field_0mi75c1"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_13n6761",
+      "key": "participantName",
+      "disabled": true
+    },
+    {
+      "label": "Address: ",
+      "type": "textfield",
+      "id": "Field_0rmdsjl",
+      "key": "participantAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1bp6j9k",
+      "key": "participantEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_10uggg5",
+      "key": "participantPhone",
+      "disabled": true
+    },
+    {
+      "text": "## Assessment of entitlement\nDecide whenever the participant has an entitlement to compensation.",
+      "type": "text",
+      "id": "Field_0vszg8h"
+    },
+    {
+      "label": "Participant has entitlement to compensation",
+      "type": "checkbox",
+      "id": "Field_15q40to",
+      "key": "requiredCompensationPayment",
+      "description": "Check if participant has entitlement to compensation."
+    },
+    {
+      "label": "Compensation amount:",
+      "type": "textfield",
+      "id": "Field_08rszui",
+      "key": "compensationPaymentAmount",
+      "description": "Fill in the amount of compensation that must be paid to participant (in CZK). ",
+      "conditional": {
+        "hide": "=requiredCompensationPayment = false"
+      },
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_0kd4bww",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

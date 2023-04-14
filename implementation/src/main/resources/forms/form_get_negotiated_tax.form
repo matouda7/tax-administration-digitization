@@ -1,0 +1,39 @@
+{
+  "components": [
+    {
+      "text": "# Save negotiated tax\n\nSave tax negotiated with tax subject on order to create final decision.",
+      "type": "text",
+      "id": "Field_1pznery"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "label": "Negotiated tax value:",
+      "type": "textfield",
+      "id": "Field_0i6qiol",
+      "key": "negotiatedTaxValue",
+      "description": "Fill in negotiated tax value (in CZK)."
+    },
+    {
+      "label": "Negotiated tax justification:",
+      "type": "textarea",
+      "id": "Field_0l5z83i",
+      "key": "negotiatedTaxJustification",
+      "description": "Fill in justification for negotiated tax value."
+    }
+  ],
+  "type": "default",
+  "id": "Form_1gpvhex",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

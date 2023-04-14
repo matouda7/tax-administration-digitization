@@ -1,0 +1,3813 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0g8zyks" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_1rl67lj">
+    <bpmn:participant id="Participant_0mvuhj4" name="Official decision management system" processRef="tax_management" />
+  </bpmn:collaboration>
+  <bpmn:process id="tax_management" name="Tax management" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_396njaq">{
+  "components": [
+    {
+      "text": "# Additional information\n\nInsert additional information about the person and process significant to the creation of official decision",
+      "type": "text",
+      "id": "Field_1rc0pkw"
+    },
+    {
+      "label": "Official decision id:",
+      "type": "textfield",
+      "id": "Field_01quix0",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "label": "Additional information:",
+      "type": "textarea",
+      "id": "Field_0cz85gb",
+      "key": "additionalInformation",
+      "description": "Add additional information about the person and process."
+    }
+  ],
+  "type": "default",
+  "id": "form_save_additional_information",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_32i68pb">{
+  "components": [
+    {
+      "text": "# Presented facts\n\nInsert facts presented by tax subject.",
+      "type": "text",
+      "id": "Field_1skftbg"
+    },
+    {
+      "label": "Official decision id:",
+      "type": "textfield",
+      "id": "Field_01quix0",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "label": "Presented facts:",
+      "type": "textarea",
+      "id": "Field_15emrlg",
+      "key": "presentedFacts",
+      "description": "Fill in the presented facts."
+    }
+  ],
+  "type": "default",
+  "id": "form_get_facts",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_15d3qnl">{
+  "components": [
+    {
+      "text": "# Facts sufficiency\n\nCheck actual information and decide, which other steps are needed to create official decision.",
+      "type": "text",
+      "id": "Field_044rd82"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Tax subject information\n",
+      "type": "text",
+      "id": "Field_0mjvsd7"
+    },
+    {
+      "label": "Person:",
+      "type": "textfield",
+      "id": "Field_03x57lq",
+      "key": "personName",
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_1ixxlx2",
+      "key": "personAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1mbmmq8",
+      "key": "personEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0npgdi9",
+      "key": "personPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Presented information",
+      "type": "text",
+      "id": "Field_0r3du38"
+    },
+    {
+      "label": "Additional information:",
+      "type": "textarea",
+      "id": "Field_1fazwtl",
+      "key": "additionalInformation",
+      "disabled": true
+    },
+    {
+      "label": "Presented facts:",
+      "type": "textarea",
+      "id": "Field_0rn5d2k",
+      "key": "presentedFacts",
+      "disabled": true
+    },
+    {
+      "text": "## Additional steps\n\nMark required additional steps, sufficient to official decision creation.",
+      "type": "text",
+      "id": "Field_1ap6ox0"
+    },
+    {
+      "label": "Expert report",
+      "type": "checkbox",
+      "id": "Field_1cemrsr",
+      "key": "requiredExpertReport",
+      "description": "Check if expert report is required."
+    },
+    {
+      "label": "Testimony",
+      "type": "checkbox",
+      "id": "Field_01ieiuz",
+      "key": "requiredTestimony",
+      "description": "Check if witness testimony is required."
+    },
+    {
+      "label": "Witnesses names:",
+      "type": "textfield",
+      "id": "Field_01ar34a",
+      "key": "witnessNames",
+      "conditional": {
+        "hide": "=requiredTestimony = false"
+      },
+      "description": "Fill in the names of witnesses separated with comma (E. g. Jan Novák, Jan Dietz, Alicia Perinfroma).",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Third person participation",
+      "type": "checkbox",
+      "id": "Field_1kfo3uw",
+      "key": "requiredThirdPersonParticipation",
+      "description": "Check if participation of third person is required."
+    },
+    {
+      "label": "Participants names:",
+      "type": "textfield",
+      "id": "Field_0mec4kr",
+      "key": "participantNames",
+      "description": "Fill in the names of participants separated with comma (E. g. Jan Novák, Jan Dietz, Alicia Perinfroma).",
+      "conditional": {
+        "hide": "=requiredThirdPersonParticipation = false"
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Special records",
+      "type": "checkbox",
+      "id": "Field_0k1zffl",
+      "key": "requiredSpecialRecords",
+      "description": "Check if special records are required."
+    }
+  ],
+  "type": "default",
+  "id": "form_check_facts_sufficiency",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_03huedr">{
+  "components": [
+    {
+      "text": "# Check official decision values\n\nCheck if all the values currently inserted to the system are valid and do not need to be updated.",
+      "type": "text",
+      "id": "Field_01trt9c"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Tax subject information",
+      "type": "text",
+      "id": "Field_06jzpul"
+    },
+    {
+      "label": "Person:",
+      "type": "textfield",
+      "id": "Field_03x57lq",
+      "key": "personName",
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_0gb02g3",
+      "key": "personAddress",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_0ncraut",
+      "key": "personEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0msrxj2",
+      "key": "personPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Presented information",
+      "type": "text",
+      "id": "Field_0gcinvq"
+    },
+    {
+      "label": "Additional information:",
+      "type": "textarea",
+      "id": "Field_0mzkte6",
+      "key": "additionalInformation",
+      "disabled": true
+    },
+    {
+      "label": "Presented facts:",
+      "type": "textarea",
+      "id": "Field_0rn5d2k",
+      "key": "presentedFacts",
+      "disabled": true
+    },
+    {
+      "text": "###Testimony information",
+      "type": "text",
+      "id": "Field_0u5g4fv",
+      "conditional": {
+        "hide": "=requiredTestimony = false"
+      }
+    },
+    {
+      "label": "Testimonies:",
+      "type": "textarea",
+      "id": "Field_1sl171i",
+      "key": "testimonies",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredTestimony = false"
+      }
+    },
+    {
+      "text": "### Expert report",
+      "type": "text",
+      "id": "Field_0ezs3ps",
+      "conditional": {
+        "hide": "=requiredExpertReport = false"
+      }
+    },
+    {
+      "label": "Expert report:",
+      "type": "textarea",
+      "id": "Field_0n39q37",
+      "key": "expertReport",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredExpertReport = false"
+      }
+    },
+    {
+      "text": "### Special records",
+      "type": "text",
+      "id": "Field_14fms4l",
+      "conditional": {
+        "hide": "=requiredSpecialRecords = false"
+      }
+    },
+    {
+      "label": "Special records:",
+      "type": "textarea",
+      "id": "Field_1ih3lzw",
+      "key": "specialRecords",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredSpecialRecords = false"
+      }
+    },
+    {
+      "text": "### Proceedings participant contributions",
+      "type": "text",
+      "id": "Field_0o6jqnp",
+      "conditional": {
+        "hide": "=requiredThirdPersonParticipation = false"
+      }
+    },
+    {
+      "label": "Proceedings participant contributions:",
+      "type": "textarea",
+      "id": "Field_096uj1f",
+      "key": "participantContributions",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredThirdPersonParticipation = false"
+      }
+    },
+    {
+      "text": "### Negotiated tax",
+      "type": "text",
+      "id": "Field_1uzezla",
+      "conditional": {
+        "hide": "=requiredTaxNegotiation = false"
+      }
+    },
+    {
+      "label": "Negotiated tax value (in CZK):",
+      "type": "textfield",
+      "id": "Field_0i6qiol",
+      "key": "negotiatedTaxValue",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredTaxNegotiation = false"
+      }
+    },
+    {
+      "label": "Negotiated tax justification:",
+      "type": "textarea",
+      "id": "Field_0l5z83i",
+      "key": "negotiatedTaxJustification",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredTaxNegotiation = false"
+      }
+    },
+    {
+      "text": "## Information correctness and completeness\n\nDecide, whether information is correct and sufficient to official decision creation.",
+      "type": "text",
+      "id": "Field_18snqhj"
+    },
+    {
+      "label": "Required decision values update",
+      "type": "checkbox",
+      "id": "Field_1sanflj",
+      "key": "requiredDecisionValuesUpdate",
+      "description": "Check if any of values above is required to be updated for correctness and sufficiency.",
+      "disabled": false
+    }
+  ],
+  "type": "default",
+  "id": "Form_0zy1s3h",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_0mcefda">{
+  "components": [
+    {
+      "text": "# Payment of proceedings cost\n\nSave the proceedings cost payment information.",
+      "type": "text",
+      "id": "Field_13ustch"
+    },
+    {
+      "label": "Official decision id:",
+      "type": "textfield",
+      "id": "Field_01quix0",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "label": "Incoming payment ID:",
+      "type": "textfield",
+      "id": "Field_0oqnr6k",
+      "key": "proceedingCostPaymentId",
+      "description": "Fill in the ID of  incoming payment."
+    }
+  ],
+  "type": "default",
+  "id": "form_get_proceedings_cost_paid",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_004jg79">{
+  "components": [
+    {
+      "text": "# Official decision creation\n\n## Start new decision creation process.",
+      "type": "text",
+      "id": "Field_1x1w1ts"
+    },
+    {
+      "text": "### Tax subject information\n\nFill in the information about the person, of which official decision is created.",
+      "type": "text",
+      "id": "Field_1r99a14"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_1w8vha0",
+      "key": "personName",
+      "description": "Fill in the person name (E.g. Jan Novák).",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_1ixxlx2",
+      "key": "personAddress",
+      "description": "Fill in the person address (E.g. Dietzova 529/8, Prague, Czech Republic).",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1mbmmq8",
+      "key": "personEmail",
+      "description": "Fill in the e-mail (E.g.  example@example.com).",
+      "validate": {
+        "required": true,
+        "validationType": "email"
+      }
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0npgdi9",
+      "key": "personPhone",
+      "description": "Fill in the phone number (E.g.  +420xxxxxxxxx).",
+      "validate": {
+        "required": true,
+        "validationType": "phone"
+      },
+      "properties": {}
+    }
+  ],
+  "type": "default",
+  "id": "form_start_official_decision_creation",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_3r4ltu0">{
+  "components": [
+    {
+      "text": "# Validation of presented facts\n\nValidate facts presented by tax subject.",
+      "type": "text",
+      "id": "Field_1skftbg"
+    },
+    {
+      "label": "Official decision id:",
+      "type": "textfield",
+      "id": "Field_01quix0",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "label": "Additional information:",
+      "type": "textarea",
+      "id": "Field_1809rdc",
+      "key": "additionalInformation",
+      "disabled": true
+    },
+    {
+      "label": "Presented facts:",
+      "type": "textarea",
+      "id": "Field_0zb8ntz",
+      "key": "presentedFacts",
+      "properties": {},
+      "disabled": true
+    },
+    {
+      "label": "Presented facts are correct",
+      "type": "checkbox",
+      "id": "Field_067k4t3",
+      "key": "correctPresentedFacts",
+      "description": "Check if all presented facts presented by tax subject are valid and correct.",
+      "defaultValue": true
+    }
+  ],
+  "type": "default",
+  "id": "form_get_facts",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_0ak1b0j">{
+  "components": [
+    {
+      "text": "# Proceedings participant information\nFill in the proceeding participant information.",
+      "type": "text",
+      "id": "Field_0mi75c1"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Participant information",
+      "type": "text",
+      "id": "Field_0hrk4v9"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_13n6761",
+      "key": "participantName",
+      "disabled": true
+    },
+    {
+      "label": "Address: ",
+      "type": "textfield",
+      "id": "Field_0rmdsjl",
+      "key": "participantAddress",
+      "description": "Fill in participant's address (E.g. Dietzova 529/8, Prague 6, Czech Republic)."
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1bp6j9k",
+      "key": "participantEmail",
+      "description": "Fill in participant's e-mail (E.g.  example@example.com).",
+      "validate": {
+        "validationType": "email"
+      }
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_10uggg5",
+      "key": "participantPhone",
+      "description": "Fill in participant's phone number (E.g.  +420xxxxxxxxx).",
+      "validate": {
+        "validationType": "phone"
+      }
+    },
+    {
+      "text": "### Reasons of proceedings participation",
+      "type": "text",
+      "id": "Field_1nnqjyd"
+    },
+    {
+      "label": "Matter of participation:",
+      "type": "textarea",
+      "id": "Field_096uj1f",
+      "key": "matterOfParticipation",
+      "description": "Fill in the reasons, why person participates the proceedings."
+    }
+  ],
+  "type": "default",
+  "id": "Form_0kd4bww",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_39sf35e">{
+  "components": [
+    {
+      "text": "# Summons participant\nThe summon of following participant is necessary.\n",
+      "type": "text",
+      "id": "Field_0mi75c1"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "###Summoned participant information",
+      "type": "text",
+      "id": "Field_0e5arlr"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_13n6761",
+      "key": "participantName",
+      "disabled": true
+    },
+    {
+      "label": "Address: ",
+      "type": "textfield",
+      "id": "Field_0rmdsjl",
+      "key": "participantAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1bp6j9k",
+      "key": "participantEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_10uggg5",
+      "key": "participantPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Result of summons\n\nFill in the result of participant summons.",
+      "type": "text",
+      "id": "Field_1nnqjyd"
+    },
+    {
+      "label": "Participant attachment is required.",
+      "type": "checkbox",
+      "id": "Field_0sjyv51",
+      "key": "requiredParticipantAttachment",
+      "defaultValue": false,
+      "description": "Check if participant does not respond to summons and the attachment is required."
+    }
+  ],
+  "type": "default",
+  "id": "Form_0kd4bww",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_1660ara">{
+  "components": [
+    {
+      "text": "# Attach participant\nAttach following participant.",
+      "type": "text",
+      "id": "Field_0mi75c1"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Participant information",
+      "type": "text",
+      "id": "Field_0hrk4v9"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_13n6761",
+      "key": "participantName",
+      "disabled": true
+    },
+    {
+      "label": "Address: ",
+      "type": "textfield",
+      "id": "Field_0rmdsjl",
+      "key": "participantAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1bp6j9k",
+      "key": "participantEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_10uggg5",
+      "key": "participantPhone",
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "Form_0kd4bww",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_3j3h3l9">{
+  "components": [
+    {
+      "text": "# Proceedings participant contribution\n\nFill in the contribution of participant.\n\n###Participant information",
+      "type": "text",
+      "id": "Field_0mi75c1"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_13n6761",
+      "key": "participantName",
+      "disabled": true
+    },
+    {
+      "label": "Address: ",
+      "type": "textfield",
+      "id": "Field_0rmdsjl",
+      "key": "participantAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1bp6j9k",
+      "key": "participantEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_10uggg5",
+      "key": "participantPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Reasons of proceedings participation",
+      "type": "text",
+      "id": "Field_1nnqjkd"
+    },
+    {
+      "label": "Matter of participation:",
+      "type": "textarea",
+      "id": "Field_096uj1k",
+      "key": "matterOfParticipation",
+      "disabled": true
+    },
+    {
+      "text": "### Participation contribution",
+      "type": "text",
+      "id": "Field_1nnqjyd"
+    },
+    {
+      "label": "Contribution:",
+      "type": "textarea",
+      "id": "Field_096uj1f",
+      "key": "participantContribution",
+      "description": "Fill in the contribution of participant."
+    }
+  ],
+  "type": "default",
+  "id": "Form_0kd4bww",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_2h6b1e5">{
+  "components": [
+    {
+      "text": "# Assess entitlement to compensation\n\n###Participant information:",
+      "type": "text",
+      "id": "Field_0mi75c1"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_13n6761",
+      "key": "participantName",
+      "disabled": true
+    },
+    {
+      "label": "Address: ",
+      "type": "textfield",
+      "id": "Field_0rmdsjl",
+      "key": "participantAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1bp6j9k",
+      "key": "participantEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_10uggg5",
+      "key": "participantPhone",
+      "disabled": true
+    },
+    {
+      "text": "## Assessment of entitlement\nDecide whenever the participant has an entitlement to compensation.",
+      "type": "text",
+      "id": "Field_0vszg8h"
+    },
+    {
+      "label": "Participant has entitlement to compensation",
+      "type": "checkbox",
+      "id": "Field_15q40to",
+      "key": "requiredCompensationPayment",
+      "description": "Check if participant has entitlement to compensation."
+    },
+    {
+      "label": "Compensation amount:",
+      "type": "textfield",
+      "id": "Field_08rszui",
+      "key": "compensationPaymentAmount",
+      "description": "Fill in the amount of compensation that must be paid to participant (in CZK). ",
+      "conditional": {
+        "hide": "=requiredCompensationPayment = false"
+      },
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_0kd4bww",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_01hvcqo">{
+  "components": [
+    {
+      "text": "# Payment of compensation\n\n###Participant information:",
+      "type": "text",
+      "id": "Field_0mi75c1"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_13n6761",
+      "key": "participantName",
+      "disabled": true
+    },
+    {
+      "label": "Address: ",
+      "type": "textfield",
+      "id": "Field_0rmdsjl",
+      "key": "participantAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1bp6j9k",
+      "key": "participantEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_10uggg5",
+      "key": "participantPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Compensation amount",
+      "type": "text",
+      "id": "Field_0ubke1n"
+    },
+    {
+      "label": "Decided amount of compensation (in CZK):",
+      "type": "textfield",
+      "id": "Field_0cnep1f",
+      "key": "compensationPaymentAmount",
+      "disabled": true
+    },
+    {
+      "text": "## Compensation payment information",
+      "type": "text",
+      "id": "Field_0vszg8h"
+    },
+    {
+      "label": "Outgoing payment ID:",
+      "type": "textfield",
+      "id": "Field_1qj04wp",
+      "key": "participantCompensationPaymentId",
+      "description": "Fill in ID of outgoing payment.",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_0kd4bww",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_1gbnplp">{
+  "components": [
+    {
+      "text": "# Notify tax subject about obligation to create special records\n\nSend notification to tax subject to create the special records starting by the day of receiving the obligation. ",
+      "type": "text",
+      "id": "Field_0ylta1u"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Tax subject information",
+      "type": "text",
+      "id": "Field_0x03n45"
+    },
+    {
+      "label": "Person:",
+      "type": "textfield",
+      "id": "Field_03x57lq",
+      "key": "personName",
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_0gb02g3",
+      "key": "personAddress",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_0ncraut",
+      "key": "personEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0msrxj2",
+      "key": "personPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Special records information",
+      "type": "text",
+      "id": "Field_1a0kqu9"
+    },
+    {
+      "label": "Matter of special records:",
+      "type": "textarea",
+      "id": "Field_0zbvb1h",
+      "key": "specialRecordsMatter",
+      "disabled": true
+    },
+    {
+      "label": "Duration (in days):",
+      "type": "number",
+      "id": "Field_1y4f9x8",
+      "key": "specialRecordsDuration",
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "Form_0jy2q2b",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_0q7vvbe">{
+  "components": [
+    {
+      "text": "# Collect special records\n\nFill in the special records that has been collected from tax subject. ",
+      "type": "text",
+      "id": "Field_0m58h1g"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Tax subject information",
+      "type": "text",
+      "id": "Field_0x03n45"
+    },
+    {
+      "label": "Person:",
+      "type": "textfield",
+      "id": "Field_03x57lq",
+      "key": "personName",
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_0gb02g3",
+      "key": "personAddress",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_0ncraut",
+      "key": "personEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0msrxj2",
+      "key": "personPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Special records information",
+      "type": "text",
+      "id": "Field_1a0kqu9"
+    },
+    {
+      "label": "Matter of special records:",
+      "type": "textarea",
+      "id": "Field_0zbvb1h",
+      "key": "specialRecordsMatter",
+      "disabled": true
+    },
+    {
+      "text": "### Special records",
+      "type": "text",
+      "id": "Field_1pjtt7v"
+    },
+    {
+      "label": "Special records:",
+      "type": "textarea",
+      "id": "Field_1ih3lzw",
+      "key": "specialRecords",
+      "description": "Fill in collected special records."
+    },
+    {
+      "text": "### Special records correctness\nDecide, whether the special records were captured correctly, based on the presented matter. ",
+      "type": "text",
+      "id": "Field_05lnsqi"
+    },
+    {
+      "label": "Special records are valid",
+      "type": "checkbox",
+      "id": "Field_1qfvup6",
+      "key": "correctSpecialRecords",
+      "description": "Check if special records are valid.",
+      "defaultValue": true
+    }
+  ],
+  "type": "default",
+  "id": "Form_0cbx5py",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_09se997">{
+  "components": [
+    {
+      "text": "# Enlighten special records creator\n\nInstruct tax subject to capture special records correctly. ",
+      "type": "text",
+      "id": "Field_06qrigw"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Tax subject information",
+      "type": "text",
+      "id": "Field_0x03n45"
+    },
+    {
+      "label": "Person:",
+      "type": "textfield",
+      "id": "Field_03x57lq",
+      "key": "personName",
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_0gb02g3",
+      "key": "personAddress",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_0ncraut",
+      "key": "personEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0msrxj2",
+      "key": "personPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Special records information",
+      "type": "text",
+      "id": "Field_1a0kqu9"
+    },
+    {
+      "label": "Matter of special records:",
+      "type": "textarea",
+      "id": "Field_0zbvb1h",
+      "key": "specialRecordsMatter",
+      "disabled": true
+    },
+    {
+      "label": "Duration (in days):",
+      "type": "number",
+      "id": "Field_1y4f9x8",
+      "key": "specialRecordsDuration",
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "Form_0m8x9n2",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_0lb77mv">{
+  "components": [
+    {
+      "text": "# Expert report creation\n\nCreate expert report required to determine tax and create official decision. ",
+      "type": "text",
+      "id": "Field_0gr0nlj"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Expert report",
+      "type": "text",
+      "id": "Field_1nojcdr"
+    },
+    {
+      "label": "Expert report:",
+      "type": "textarea",
+      "id": "Field_0n39q37",
+      "key": "expertReport",
+      "description": "Fill in the expert report. "
+    }
+  ],
+  "type": "default",
+  "id": "Form_0m7zvhl",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_3c2hjpr">{
+  "components": [
+    {
+      "text": "# Save testimony information\n\nFill in the information about witness and the matter of testimony",
+      "type": "text",
+      "id": "Field_03f7911"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Witness information",
+      "type": "text",
+      "id": "Field_1o32j3b"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_1w8vha0",
+      "key": "witnessName",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_1ixxlx2",
+      "key": "witnessAddress",
+      "description": "Fill in the witness address (E.g. Dietzova 529/8, Prague 6, Czech Republic).",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1mbmmq8",
+      "key": "witnessEmail",
+      "description": "Fill in the witness e-mail (E.g.  example@example.com).",
+      "validate": {
+        "required": true,
+        "validationType": "email"
+      }
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0npgdi9",
+      "key": "witnessPhone",
+      "description": "Fill in the witness phone number (E.g.  +420xxxxxxxxx).",
+      "validate": {
+        "required": true,
+        "validationType": "phone"
+      }
+    },
+    {
+      "text": "### Reasons of testimony creation",
+      "type": "text",
+      "id": "Field_12enrng"
+    },
+    {
+      "label": "Matter of testimony:",
+      "type": "textarea",
+      "id": "Field_0rgf3kg",
+      "key": "matterOfTestimony",
+      "description": "Fill in the matter of witness testimony. ",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_0t8da3q",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_1nlm22u">{
+  "components": [
+    {
+      "text": "# Getting testimony\n\nFill in the witness testimony.",
+      "type": "text",
+      "id": "Field_1fkwwpf"
+    },
+    {
+      "text": "### Witness information",
+      "type": "text",
+      "id": "Field_1o32j3b"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_1w8vha0",
+      "key": "witnessName",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_1ixxlx2",
+      "key": "witnessAddress",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1mbmmq8",
+      "key": "witnessEmail",
+      "validate": {
+        "required": false,
+        "pattern": "[a-z0-9]+@[a-z]+\\.[a-z]{2,3}"
+      },
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0npgdi9",
+      "key": "witnessPhone",
+      "validate": {
+        "required": false,
+        "pattern": "^\\+\\d{12}(\\d{2})?$"
+      },
+      "disabled": true
+    },
+    {
+      "text": "### Reasons of testimony creation",
+      "type": "text",
+      "id": "Field_12enrng"
+    },
+    {
+      "label": "Matter of testimony:",
+      "type": "textarea",
+      "id": "Field_0rgf3kg",
+      "key": "matterOfTestimony",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "text": "### Testimony",
+      "type": "text",
+      "id": "Field_1hxfsap"
+    },
+    {
+      "label": "Testimony:",
+      "type": "textarea",
+      "id": "Field_1sl171i",
+      "key": "testimony",
+      "description": "Fill in the testimony."
+    }
+  ],
+  "type": "default",
+  "id": "Form_0ncwfwz",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_1esq5sd">{
+  "components": [
+    {
+      "text": "# Check added information\n\nCheck if added information is sufficient for final decision creation or not. ",
+      "type": "text",
+      "id": "Field_1aiyrkt"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Tax subject information",
+      "type": "text",
+      "id": "Field_06jzpul"
+    },
+    {
+      "label": "Person:",
+      "type": "textfield",
+      "id": "Field_03x57lq",
+      "key": "personName",
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_0gb02g3",
+      "key": "personAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_0ncraut",
+      "key": "personEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0msrxj2",
+      "key": "personPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Presented information",
+      "type": "text",
+      "id": "Field_0gcinvq"
+    },
+    {
+      "label": "Additional information:",
+      "type": "textarea",
+      "id": "Field_0mzkte6",
+      "key": "additionalInformation",
+      "disabled": true
+    },
+    {
+      "label": "Presented facts:",
+      "type": "textarea",
+      "id": "Field_0rn5d2k",
+      "key": "presentedFacts",
+      "disabled": true
+    },
+    {
+      "text": "###Testimonies information",
+      "type": "text",
+      "id": "Field_0u5g4fv",
+      "conditional": {
+        "hide": "=requiredTestimony = false"
+      }
+    },
+    {
+      "label": "Testimonies:",
+      "type": "textarea",
+      "id": "Field_1sl171i",
+      "key": "testimonies",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredTestimony = false"
+      }
+    },
+    {
+      "text": "### Expert report",
+      "type": "text",
+      "id": "Field_0ezs3ps",
+      "conditional": {
+        "hide": "=requiredExpertReport = false"
+      }
+    },
+    {
+      "label": "Expert report:",
+      "type": "textarea",
+      "id": "Field_0n39q37",
+      "key": "expertReport",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredExpertReport = false"
+      }
+    },
+    {
+      "text": "### Special records",
+      "type": "text",
+      "id": "Field_14fms4l",
+      "conditional": {
+        "hide": "=requiredSpecialRecords = false"
+      }
+    },
+    {
+      "label": "Special records:",
+      "type": "textarea",
+      "id": "Field_1ih3lzw",
+      "key": "specialRecords",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredSpecialRecords = false"
+      }
+    },
+    {
+      "text": "### Proceedings participant contributions",
+      "type": "text",
+      "id": "Field_0o6jqnp",
+      "conditional": {
+        "hide": "=requiredThirdPersonParticipation = false"
+      }
+    },
+    {
+      "label": "Proceedings participant contributions:",
+      "type": "textarea",
+      "id": "Field_096uj1f",
+      "key": "participantContributions",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredThirdPersonParticipation = false"
+      }
+    },
+    {
+      "text": "## Information sufficiency\n\nDecide whether added information is sufficient to  official decision creation.",
+      "type": "text",
+      "id": "Field_18snqhj"
+    },
+    {
+      "label": "Required tax negotiation",
+      "type": "checkbox",
+      "id": "Field_1sanflj",
+      "key": "requiredTaxNegotiation",
+      "description": "Check if tax negotiation is required to create official decision."
+    }
+  ],
+  "type": "default",
+  "id": "Form_0zy1s3h",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_0n5e61e">{
+  "components": [
+    {
+      "text": "# Save negotiated tax\n\nSave tax negotiated with tax subject on order to create final decision.",
+      "type": "text",
+      "id": "Field_1pznery"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "label": "Negotiated tax value:",
+      "type": "textfield",
+      "id": "Field_0i6qiol",
+      "key": "negotiatedTaxValue",
+      "description": "Fill in negotiated tax value (in CZK)."
+    },
+    {
+      "label": "Negotiated tax justification:",
+      "type": "textarea",
+      "id": "Field_0l5z83i",
+      "key": "negotiatedTaxJustification",
+      "description": "Fill in justification for negotiated tax value."
+    }
+  ],
+  "type": "default",
+  "id": "Form_1gpvhex",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_33bgaqg">{
+  "components": [
+    {
+      "text": "# Update official decision values\n\nUpdate values to accomplish its correctness, completeness and sufficiency for official decision creation.",
+      "type": "text",
+      "id": "Field_01trt9c"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Tax subject information",
+      "type": "text",
+      "id": "Field_06jzpul"
+    },
+    {
+      "label": "Person:",
+      "type": "textfield",
+      "id": "Field_03x57lq",
+      "key": "personName",
+      "disabled": false
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_0gb02g3",
+      "key": "personAddress",
+      "validate": {
+        "required": false
+      },
+      "disabled": false
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_0ncraut",
+      "key": "personEmail",
+      "disabled": false,
+      "validate": {
+        "validationType": "email"
+      },
+      "properties": {}
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_1eh8wiw",
+      "key": "personPhone",
+      "validate": {
+        "validationType": "phone"
+      }
+    },
+    {
+      "text": "### Presented information",
+      "type": "text",
+      "id": "Field_0gcinvq"
+    },
+    {
+      "label": "Additional information:",
+      "type": "textarea",
+      "id": "Field_0mzkte6",
+      "key": "additionalInformation",
+      "disabled": false
+    },
+    {
+      "label": "Presented facts:",
+      "type": "textarea",
+      "id": "Field_0rn5d2k",
+      "key": "presentedFacts",
+      "disabled": false
+    },
+    {
+      "text": "###Testimony information",
+      "type": "text",
+      "id": "Field_0u5g4fv",
+      "conditional": {
+        "hide": "=requiredTestimony = false"
+      }
+    },
+    {
+      "label": "Testimonies:",
+      "type": "textarea",
+      "id": "Field_1sl171i",
+      "key": "testimonies",
+      "disabled": false,
+      "conditional": {
+        "hide": "=requiredTestimony = false"
+      }
+    },
+    {
+      "text": "### Expert report",
+      "type": "text",
+      "id": "Field_0ezs3ps",
+      "conditional": {
+        "hide": "=requiredExpertReport = false"
+      }
+    },
+    {
+      "label": "Expert report:",
+      "type": "textarea",
+      "id": "Field_0n39q37",
+      "key": "expertReport",
+      "disabled": false,
+      "conditional": {
+        "hide": "=requiredExpertReport = false"
+      }
+    },
+    {
+      "text": "### Special records",
+      "type": "text",
+      "id": "Field_14fms4l",
+      "conditional": {
+        "hide": "=requiredSpecialRecords = false"
+      }
+    },
+    {
+      "label": "Special records:",
+      "type": "textarea",
+      "id": "Field_1ih3lzw",
+      "key": "specialRecords",
+      "disabled": false,
+      "conditional": {
+        "hide": "=requiredSpecialRecords = false"
+      }
+    },
+    {
+      "text": "### Proceedings participant contributions",
+      "type": "text",
+      "id": "Field_0o6jqnp",
+      "conditional": {
+        "hide": "=requiredThirdPersonParticipation = false"
+      }
+    },
+    {
+      "label": "Proceedings participant contributions:",
+      "type": "textarea",
+      "id": "Field_096uj1f",
+      "key": "participantContributions",
+      "disabled": false,
+      "conditional": {
+        "hide": "=requiredThirdPersonParticipation = false"
+      }
+    },
+    {
+      "text": "### Negotiated tax",
+      "type": "text",
+      "id": "Field_1uzezla",
+      "conditional": {
+        "hide": "=requiredTaxNegotiation = false"
+      }
+    },
+    {
+      "label": "Negotiated tax value (in CZK):",
+      "type": "textfield",
+      "id": "Field_0i6qiol",
+      "key": "negotiatedTaxValue",
+      "disabled": false,
+      "conditional": {
+        "hide": "=requiredTaxNegotiation = false"
+      }
+    },
+    {
+      "label": "Negotiated tax justification:",
+      "type": "textarea",
+      "id": "Field_0l5z83i",
+      "key": "negotiatedTaxJustification",
+      "disabled": false,
+      "conditional": {
+        "hide": "=requiredTaxNegotiation = false"
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_0zy1s3h",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_3gk6k5u">{
+  "components": [
+    {
+      "text": "#Creation of official decision\n\nCreate official decision based on the followed information.",
+      "type": "text",
+      "id": "Field_01trt9c"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Tax subject information",
+      "type": "text",
+      "id": "Field_06jzpul"
+    },
+    {
+      "label": "Person:",
+      "type": "textfield",
+      "id": "Field_03x57lq",
+      "key": "personName",
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_0gb02g3",
+      "key": "personAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_0ncraut",
+      "key": "personEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0msrxj2",
+      "key": "personPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Presented information",
+      "type": "text",
+      "id": "Field_0gcinvq"
+    },
+    {
+      "label": "Additional information:",
+      "type": "textarea",
+      "id": "Field_0mzkte6",
+      "key": "additionalInformation",
+      "disabled": true
+    },
+    {
+      "label": "Presented facts:",
+      "type": "textarea",
+      "id": "Field_0rn5d2k",
+      "key": "presentedFacts",
+      "disabled": true
+    },
+    {
+      "text": "###Testimony information",
+      "type": "text",
+      "id": "Field_0u5g4fv",
+      "conditional": {
+        "hide": "=requiredTestimony = false"
+      }
+    },
+    {
+      "label": "Testimonies:",
+      "type": "textarea",
+      "id": "Field_1sl171i",
+      "key": "testimonies",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredTestimony = false"
+      }
+    },
+    {
+      "text": "### Expert report",
+      "type": "text",
+      "id": "Field_0ezs3ps",
+      "conditional": {
+        "hide": "=requiredExpertReport = false"
+      }
+    },
+    {
+      "label": "Expert report:",
+      "type": "textarea",
+      "id": "Field_0n39q37",
+      "key": "expertReport",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredExpertReport = false"
+      }
+    },
+    {
+      "text": "### Special records",
+      "type": "text",
+      "id": "Field_14fms4l",
+      "conditional": {
+        "hide": "=requiredSpecialRecords = false"
+      }
+    },
+    {
+      "label": "Special records:",
+      "type": "textarea",
+      "id": "Field_1ih3lzw",
+      "key": "specialRecords",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredSpecialRecords = false"
+      }
+    },
+    {
+      "text": "### Proceedings participant contributions",
+      "type": "text",
+      "id": "Field_0o6jqnp",
+      "conditional": {
+        "hide": "=requiredThirdPersonParticipation = false"
+      }
+    },
+    {
+      "label": "Proceedings participant contributions:",
+      "type": "textarea",
+      "id": "Field_096uj1f",
+      "key": "participantContributions",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredThirdPersonParticipation = false"
+      }
+    },
+    {
+      "text": "### Negotiated tax",
+      "type": "text",
+      "id": "Field_1uzezla",
+      "conditional": {
+        "hide": "=requiredTaxNegotiation = false"
+      }
+    },
+    {
+      "label": "Negotiated tax value (in CZK):",
+      "type": "textfield",
+      "id": "Field_0i6qiol",
+      "key": "negotiatedTaxValue",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredTaxNegotiation = false"
+      }
+    },
+    {
+      "label": "Negotiated tax justification:",
+      "type": "textarea",
+      "id": "Field_0l5z83i",
+      "key": "negotiatedTaxJustification",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredTaxNegotiation = false"
+      }
+    },
+    {
+      "text": "# Decision creation\n\nDetermine final amount of tax to be paid and write down the justification. ",
+      "type": "text",
+      "id": "Field_031pk4y"
+    },
+    {
+      "label": "Tax amount:",
+      "type": "textfield",
+      "id": "Field_1m06wiv",
+      "key": "taxAmount",
+      "description": "Fill in the decided amount of tax (in CZK)."
+    },
+    {
+      "label": "Justification:",
+      "type": "textarea",
+      "id": "Field_1h81bnu",
+      "key": "taxJustification",
+      "description": "Fill n the justification for the final amount of tax."
+    }
+  ],
+  "type": "default",
+  "id": "Form_0zy1s3h",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_33qeejp">{
+  "components": [
+    {
+      "text": "# Publish official decision\n\nPublish created official decision. Send decision to tax subject.",
+      "type": "text",
+      "id": "Field_1nq4lzg"
+    },
+    {
+      "label": "Official decision id:",
+      "type": "textfield",
+      "id": "Field_01quix0",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "label": "Path to the generated official decision:",
+      "type": "textfield",
+      "id": "Field_0ie42oj",
+      "key": "decisionFileName",
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "Form_1xc0w82",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_33jtujv">{
+  "components": [
+    {
+      "text": "# Notify tax subject about testimony\n\nNotify tax subject about testimony creation and the matter of testimony",
+      "type": "text",
+      "id": "Field_03f7911"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Witness information",
+      "type": "text",
+      "id": "Field_1o32j3b"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_1w8vha0",
+      "key": "witnessName",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_1ixxlx2",
+      "key": "witnessAddress",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1mbmmq8",
+      "key": "witnessEmail",
+      "validate": {
+        "required": false,
+        "pattern": "[a-z0-9]+@[a-z]+\\.[a-z]{2,3}"
+      },
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0npgdi9",
+      "key": "witnessPhone",
+      "validate": {
+        "required": false,
+        "pattern": "^\\+\\d{12}(\\d{2})?$"
+      },
+      "disabled": true
+    },
+    {
+      "text": "### Reasons of testimony creation",
+      "type": "text",
+      "id": "Field_12enrng"
+    },
+    {
+      "label": "Matter of testimony:",
+      "type": "textarea",
+      "id": "Field_0rgf3kg",
+      "key": "matterOfTestimony",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "Form_0llu130",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_3jrfl1o">{
+  "components": [
+    {
+      "text": "# Save information about obligation to create special records\n\nSave the information about the obligation to create special records, concretely the matter of special records and the duration, during which the special records must be recorded. ",
+      "type": "text",
+      "id": "Field_1ptjvwe"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "label": "Matter of special records:",
+      "type": "textarea",
+      "id": "Field_0zbvb1h",
+      "key": "specialRecordsMatter",
+      "description": "Fill in the matter of special records. "
+    },
+    {
+      "label": "Duration:",
+      "type": "number",
+      "id": "Field_1y4f9x8",
+      "key": "specialRecordsDuration",
+      "description": "Fill in the duration, during which the tax subject must save special records (in days).  "
+    }
+  ],
+  "type": "default",
+  "id": "Form_0jy2q2b",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_12js5du">{
+  "components": [
+    {
+      "text": "# Postpone offical decision creation\nThe official decision needs to be postponed because of impossibility to create official decision.",
+      "type": "text",
+      "id": "Field_0mi75c1"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "Form_1r7m9x5",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:sequenceFlow id="Flow_0cmuiao" name="Yes" sourceRef="gateway_proceedings_participation_needed" targetRef="subprocess_proceedings_participation">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredThirdPersonParticipation = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0fm3gkm" name="Yes" sourceRef="gateway_special_records_needed" targetRef="subprocess_special_records_creation">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredSpecialRecords = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1xifs9u" sourceRef="user_task_check_facts_sufficiency" targetRef="gateway_sufficient_facts" />
+    <bpmn:sequenceFlow id="Flow_0q5jqen" name="No" sourceRef="gateway_testimony_needed" targetRef="gateway_testimony_needed_join">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredTestimony = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0zeztn4" sourceRef="gateway_additional_information" targetRef="gateway_proceedings_participation_needed" />
+    <bpmn:sequenceFlow id="Flow_0magwau" sourceRef="gateway_additional_information" targetRef="gateway_testimony_needed" />
+    <bpmn:sequenceFlow id="Flow_19vifl8" sourceRef="gateway_additional_information" targetRef="gateway_special_records_needed" />
+    <bpmn:sequenceFlow id="Flow_0qu3yny" name="No" sourceRef="gateway_sufficient_facts" targetRef="gateway_additional_information">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredTestimony = true or 
+requiredExpertReport = true or 
+requiredSpecialRecords = true or 
+requiredThirdPersonParticipation = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0edjzv7" sourceRef="gateway_additional_information" targetRef="gateway_expert_report_needed" />
+    <bpmn:sequenceFlow id="Flow_0osb2uz" name="No" sourceRef="gateway_expert_report_needed" targetRef="gateway_expert_report_needed_join">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredExpertReport = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1pmp2w9" sourceRef="subprocess_validating_facts" targetRef="user_task_check_facts_sufficiency" />
+    <bpmn:sequenceFlow id="Flow_0yux4qu" sourceRef="subprocess_testimony_creation" targetRef="script_task_resolve_testimonies" />
+    <bpmn:sequenceFlow id="Flow_00n3pjs" name="Yes" sourceRef="gateway_testimony_needed" targetRef="subprocess_testimony_creation">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredTestimony = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_18kphbc" sourceRef="subprocess_expert_report_creation" targetRef="gateway_expert_report_needed_join" />
+    <bpmn:sequenceFlow id="Flow_0t66gk4" name="Yes" sourceRef="gateway_expert_report_needed" targetRef="subprocess_expert_report_creation">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredExpertReport = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1vx28ui" name="No" sourceRef="gateway_proceedings_participation_needed" targetRef="gateway_proceedings_participation_needed_join">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredThirdPersonParticipation = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1iarqaa" sourceRef="subprocess_proceedings_participation" targetRef="script_task_resolve_participant_contributions" />
+    <bpmn:sequenceFlow id="Flow_1g18sel" sourceRef="gateway_expert_report_needed_join" targetRef="gateway_additional_information_join" />
+    <bpmn:sequenceFlow id="Flow_0ufedhu" name="No" sourceRef="gateway_decision_values_correct" targetRef="user_task_update_final_decision_values">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredDecisionValuesUpdate=true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1awr000" sourceRef="user_task_check_final_decision_values" targetRef="gateway_decision_values_correct" />
+    <bpmn:sequenceFlow id="Flow_1gwhtv7" sourceRef="subprocess_tax_negotiation" targetRef="gateway_tax_negotiation_needed_join" />
+    <bpmn:sequenceFlow id="Flow_1ft9r5l" sourceRef="gateway_sufficient_fatcs_join" targetRef="user_task_check_final_decision_values" />
+    <bpmn:sequenceFlow id="Flow_0kdemr1" sourceRef="user_task_update_final_decision_values" targetRef="gateway_sufficient_fatcs_join" />
+    <bpmn:sequenceFlow id="Flow_0wlcwem" sourceRef="gateway_tax_negotiation_needed_join" targetRef="gateway_sufficient_fatcs_join" />
+    <bpmn:sequenceFlow id="Flow_1vwlahs" name="Yes" sourceRef="gateway_sufficient_facts" targetRef="gateway_sufficient_fatcs_join">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredTestimony = false and 
+requiredExpertReport = false and 
+requiredSpecialRecords = false and 
+requiredThirdPersonParticipation = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0sptwi4" name="No" sourceRef="gateway_tax_negotiation_needed" targetRef="subprocess_tax_negotiation">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredTaxNegotiation = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1wxsmms" name="Yes" sourceRef="gateway_tax_negotiation_needed" targetRef="gateway_tax_negotiation_needed_join">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredTaxNegotiation = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0fawwid" sourceRef="user_task_check_added_information" targetRef="gateway_tax_negotiation_needed" />
+    <bpmn:sequenceFlow id="Flow_0knl799" sourceRef="gateway_additional_information_join" targetRef="user_task_check_added_information" />
+    <bpmn:sequenceFlow id="Flow_0iigwvk" sourceRef="gateway_special_records_needed_join" targetRef="gateway_additional_information_join" />
+    <bpmn:sequenceFlow id="Flow_1jwkavj" sourceRef="message_event_special_records_change_of_circumstances" targetRef="gateway_special_records_needed_join" />
+    <bpmn:sequenceFlow id="Flow_1pyxxll" name="No" sourceRef="gateway_special_records_needed" targetRef="gateway_special_records_needed_join">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredSpecialRecords = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0co6rvm" sourceRef="subprocess_special_records_creation" targetRef="gateway_special_records_needed_join" />
+    <bpmn:sequenceFlow id="Flow_13kwouj" sourceRef="user_task_get_proceedings_cost_paid" targetRef="end_event_decision_created" />
+    <bpmn:sequenceFlow id="Flow_07v89mj" sourceRef="user_task_publish_official_decision" targetRef="user_task_get_proceedings_cost_paid" />
+    <bpmn:sequenceFlow id="Flow_1oyh9za" sourceRef="user_task_create_official_decision" targetRef="service_task_genereate_official_decision" />
+    <bpmn:sequenceFlow id="Flow_11uo92z" name="Yes" sourceRef="gateway_decision_values_correct" targetRef="user_task_create_official_decision">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredDecisionValuesUpdate=false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_05ax1xc" sourceRef="start_event_tax_management" targetRef="user_task_start_official_decision_creation" />
+    <bpmn:startEvent id="start_event_tax_management" name="Submission of official decision creation received">
+      <bpmn:extensionElements />
+      <bpmn:outgoing>Flow_05ax1xc</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0lksktp" sourceRef="service_task_genereate_official_decision" targetRef="user_task_publish_official_decision" />
+    <bpmn:userTask id="user_task_start_official_decision_creation" name="Start official decision creation">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_004jg79" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=personName" target="personName" />
+          <zeebe:output source="=personAddress" target="personAddress" />
+          <zeebe:output source="=personEmail" target="personEmail" />
+          <zeebe:output source="=personPhone" target="personPhone" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_05ax1xc</bpmn:incoming>
+      <bpmn:outgoing>Flow_11lqq6r</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="gateway_special_records_needed" name="Are special records needed?">
+      <bpmn:incoming>Flow_19vifl8</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fm3gkm</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1pyxxll</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="user_task_save_additional_information" name="Save additional information">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_396njaq" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=additionalInformation" target="additionalInformation" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1q257q9</bpmn:incoming>
+      <bpmn:outgoing>Flow_19bttjg</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="gateway_sufficient_facts" name="Sufficient facts presented?">
+      <bpmn:incoming>Flow_1xifs9u</bpmn:incoming>
+      <bpmn:outgoing>Flow_1vwlahs</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0qu3yny</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="user_task_check_facts_sufficiency" name="Check facts sufficiency">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_15d3qnl" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=requiredTestimony" target="requiredTestimony" />
+          <zeebe:output source="=requiredExpertReport" target="requiredExpertReport" />
+          <zeebe:output source="=requiredSpecialRecords" target="requiredSpecialRecords" />
+          <zeebe:output source="=requiredThirdPersonParticipation" target="requiredThirdPersonParticipation" />
+          <zeebe:output source="=false" target="requiredTaxNegotiation" />
+          <zeebe:output source="=split(witnessNames, &#34;,&#34;)" target="witnessNameList" />
+          <zeebe:output source="=split(participantNames, &#34;,&#34;)" target="participantNameList" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1pmp2w9</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xifs9u</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="gateway_testimony_needed" name="Is testimony needed?">
+      <bpmn:incoming>Flow_0magwau</bpmn:incoming>
+      <bpmn:outgoing>Flow_00n3pjs</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0q5jqen</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:parallelGateway id="gateway_additional_information">
+      <bpmn:incoming>Flow_0qu3yny</bpmn:incoming>
+      <bpmn:outgoing>Flow_0magwau</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0edjzv7</bpmn:outgoing>
+      <bpmn:outgoing>Flow_19vifl8</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0zeztn4</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:exclusiveGateway id="gateway_expert_report_needed" name="Is expert report needed?">
+      <bpmn:incoming>Flow_0edjzv7</bpmn:incoming>
+      <bpmn:outgoing>Flow_0t66gk4</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0osb2uz</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:subProcess id="subprocess_special_records_creation" name="Special records creation">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_0fm3gkm</bpmn:incoming>
+      <bpmn:outgoing>Flow_0co6rvm</bpmn:outgoing>
+      <bpmn:startEvent id="start_event_special_records_creation" name="Start special records creation process">
+        <bpmn:outgoing>Flow_0o8u6mz</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_0o8u6mz" sourceRef="start_event_special_records_creation" targetRef="user_task_save_special_records_information" />
+      <bpmn:sequenceFlow id="Flow_08fjhyw" sourceRef="user_task_notify_tax_subject_about_special_records_creation" targetRef="gateway_special_records_correct_join" />
+      <bpmn:endEvent id="end_event_special_records_created" name="Special records are created">
+        <bpmn:incoming>Flow_13z2o1u</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:userTask id="user_task_notify_tax_subject_about_special_records_creation" name="Notify tax subject about special records creation">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_1gbnplp" />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1rznk3o</bpmn:incoming>
+        <bpmn:outgoing>Flow_08fjhyw</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:userTask id="user_task_collect_special_records" name="Collect special records">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_0q7vvbe" />
+          <zeebe:ioMapping>
+            <zeebe:output source="=specialRecords" target="specialRecords" />
+            <zeebe:output source="=correctSpecialRecords" target="correctSpecialRecords" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_01bhfx5</bpmn:incoming>
+        <bpmn:outgoing>Flow_0wtvh1k</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:intermediateCatchEvent id="timer_event_special_records" name="Required time">
+        <bpmn:incoming>Flow_187tii7</bpmn:incoming>
+        <bpmn:outgoing>Flow_01bhfx5</bpmn:outgoing>
+        <bpmn:timerEventDefinition id="TimerEventDefinition_0k8d2xv">
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">="PT" + string(specialRecordsDuration) + "S"</bpmn:timeDuration>
+        </bpmn:timerEventDefinition>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:exclusiveGateway id="gateway_special_records_correct" name="Are special records correctly produced?">
+        <bpmn:incoming>Flow_0wtvh1k</bpmn:incoming>
+        <bpmn:outgoing>Flow_13z2o1u</bpmn:outgoing>
+        <bpmn:outgoing>Flow_1vmm295</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_13z2o1u" name="Yes" sourceRef="gateway_special_records_correct" targetRef="end_event_special_records_created">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=correctSpecialRecords = true</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:exclusiveGateway id="gateway_special_records_correct_join">
+        <bpmn:incoming>Flow_08npyla</bpmn:incoming>
+        <bpmn:incoming>Flow_08fjhyw</bpmn:incoming>
+        <bpmn:outgoing>Flow_187tii7</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_1vmm295" name="No" sourceRef="gateway_special_records_correct" targetRef="user_task_enlighten_special_records_creator">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=correctSpecialRecords = false</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_08npyla" sourceRef="user_task_enlighten_special_records_creator" targetRef="gateway_special_records_correct_join" />
+      <bpmn:userTask id="user_task_enlighten_special_records_creator" name="Enlighten special records creator">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_09se997" />
+          <zeebe:ioMapping>
+            <zeebe:output source="=&#34;&#34;" target="specialRecords" />
+            <zeebe:output source="=true" target="correctSpecialRecords" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1vmm295</bpmn:incoming>
+        <bpmn:outgoing>Flow_08npyla</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:sequenceFlow id="Flow_0wtvh1k" sourceRef="user_task_collect_special_records" targetRef="gateway_special_records_correct" />
+      <bpmn:sequenceFlow id="Flow_187tii7" sourceRef="gateway_special_records_correct_join" targetRef="timer_event_special_records" />
+      <bpmn:sequenceFlow id="Flow_01bhfx5" sourceRef="timer_event_special_records" targetRef="user_task_collect_special_records" />
+      <bpmn:sequenceFlow id="Flow_1rznk3o" sourceRef="user_task_save_special_records_information" targetRef="user_task_notify_tax_subject_about_special_records_creation" />
+      <bpmn:userTask id="user_task_save_special_records_information" name="Save special records information">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_3jrfl1o" />
+          <zeebe:ioMapping>
+            <zeebe:output source="=specialRecordsMatter" target="specialRecordsMatter" />
+            <zeebe:output source="=specialRecordsDuration" target="specialRecordsDuration" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0o8u6mz</bpmn:incoming>
+        <bpmn:outgoing>Flow_1rznk3o</bpmn:outgoing>
+      </bpmn:userTask>
+    </bpmn:subProcess>
+    <bpmn:subProcess id="subprocess_testimony_creation" name="Testimony creation">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_00n3pjs</bpmn:incoming>
+      <bpmn:outgoing>Flow_0yux4qu</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+        <bpmn:extensionElements>
+          <zeebe:loopCharacteristics inputCollection="=witnessNameList" inputElement="witnessName" outputCollection="testimonyList" outputElement="=testimony" />
+        </bpmn:extensionElements>
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="start_event_testimony_creation" name="Start testimony creation process">
+        <bpmn:extensionElements>
+          <zeebe:ioMapping>
+            <zeebe:output source="=&#34;&#34;" target="witnessAddress" />
+            <zeebe:output source="=&#34;&#34;" target="witnessEmail" />
+            <zeebe:output source="=&#34;&#34;" target="witnessPhone" />
+            <zeebe:output source="=&#34;&#34;" target="matterOfTestimony" />
+            <zeebe:output source="=&#34;&#34;" target="testimony" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:outgoing>Flow_0878bgp</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_0878bgp" sourceRef="start_event_testimony_creation" targetRef="user_task_save_testimony_information" />
+      <bpmn:sequenceFlow id="Flow_15n3zhc" sourceRef="user_task_save_testimony_information" targetRef="user_task_notify_tax_subject_about_testimony" />
+      <bpmn:userTask id="user_task_save_testimony_information" name="Save testimony information">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_3c2hjpr" />
+          <zeebe:ioMapping>
+            <zeebe:output source="=witnessName" target="witnessName" />
+            <zeebe:output source="=witnessAddress" target="witnessAddress" />
+            <zeebe:output source="=witnessEmail" target="witnessEmail" />
+            <zeebe:output source="=witnessPhone" target="witnessPhone" />
+            <zeebe:output source="=matterOfTestimony" target="matterOfTestimony" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0878bgp</bpmn:incoming>
+        <bpmn:outgoing>Flow_15n3zhc</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:userTask id="user_task_get_testimony" name="Get testimony">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_1nlm22u" />
+          <zeebe:ioMapping>
+            <zeebe:output source="=testimony" target="testimony" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0dmd8k6</bpmn:incoming>
+        <bpmn:outgoing>Flow_1v1wiri</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:endEvent id="end_event_testimony_created" name="Testimony is created">
+        <bpmn:incoming>Flow_1v1wiri</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_1v1wiri" sourceRef="user_task_get_testimony" targetRef="end_event_testimony_created" />
+      <bpmn:sequenceFlow id="Flow_0dmd8k6" sourceRef="user_task_notify_tax_subject_about_testimony" targetRef="user_task_get_testimony" />
+      <bpmn:userTask id="user_task_notify_tax_subject_about_testimony" name="Notify tax subject about testimony">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_33jtujv" />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_15n3zhc</bpmn:incoming>
+        <bpmn:outgoing>Flow_0dmd8k6</bpmn:outgoing>
+      </bpmn:userTask>
+    </bpmn:subProcess>
+    <bpmn:subProcess id="subprocess_expert_report_creation" name="Expert report creation">
+      <bpmn:incoming>Flow_0t66gk4</bpmn:incoming>
+      <bpmn:outgoing>Flow_18kphbc</bpmn:outgoing>
+      <bpmn:startEvent id="start_event_expert_report_creation" name="Start expert report creation process">
+        <bpmn:outgoing>Flow_14autg5</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_14autg5" sourceRef="start_event_expert_report_creation" targetRef="user_task_create_expert_report" />
+      <bpmn:userTask id="user_task_create_expert_report" name="Create expert report">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_0lb77mv" />
+          <zeebe:ioMapping>
+            <zeebe:output source="=expertReport" target="expertReport" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_14autg5</bpmn:incoming>
+        <bpmn:outgoing>Flow_13zcgyj</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:endEvent id="end_event_expert_report_created" name="Expert report is created">
+        <bpmn:incoming>Flow_13zcgyj</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_13zcgyj" sourceRef="user_task_create_expert_report" targetRef="end_event_expert_report_created" />
+    </bpmn:subProcess>
+    <bpmn:exclusiveGateway id="gateway_special_records_needed_join">
+      <bpmn:incoming>Flow_0co6rvm</bpmn:incoming>
+      <bpmn:incoming>Flow_1pyxxll</bpmn:incoming>
+      <bpmn:incoming>Flow_1jwkavj</bpmn:incoming>
+      <bpmn:outgoing>Flow_0iigwvk</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:subProcess id="subprocess_validating_facts" name="Validating facts">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_19bttjg</bpmn:incoming>
+      <bpmn:outgoing>Flow_1pmp2w9</bpmn:outgoing>
+      <bpmn:startEvent id="start_event_validating_facts" name="Start facts validation process">
+        <bpmn:outgoing>Flow_1dqoqjn</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:userTask id="user_task_get_facts" name="Get facts from tax subject">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_32i68pb" />
+          <zeebe:ioMapping>
+            <zeebe:output source="=presentedFacts" target="presentedFacts" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1w2zjqh</bpmn:incoming>
+        <bpmn:outgoing>Flow_0ps1srv</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:sequenceFlow id="Flow_1dqoqjn" sourceRef="start_event_validating_facts" targetRef="gateway_valid_facts_join" />
+      <bpmn:sequenceFlow id="Flow_0ps1srv" sourceRef="user_task_get_facts" targetRef="user_task_validate_facts" />
+      <bpmn:userTask id="user_task_validate_facts" name="Validate presented facts">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_3r4ltu0" />
+          <zeebe:ioMapping>
+            <zeebe:output source="=correctPresentedFacts" target="correctPresentedFacts" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0ps1srv</bpmn:incoming>
+        <bpmn:outgoing>Flow_1s4gsly</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:endEvent id="end_event_facts_submitted" name="Validated facts are submitted">
+        <bpmn:incoming>Flow_0rmha46</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:exclusiveGateway id="gateway_valid_facts" name="All facts are valid?">
+        <bpmn:extensionElements />
+        <bpmn:incoming>Flow_1s4gsly</bpmn:incoming>
+        <bpmn:outgoing>Flow_0rmha46</bpmn:outgoing>
+        <bpmn:outgoing>Flow_0qxvie4</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_1s4gsly" sourceRef="user_task_validate_facts" targetRef="gateway_valid_facts" />
+      <bpmn:sequenceFlow id="Flow_0rmha46" name="Yes" sourceRef="gateway_valid_facts" targetRef="end_event_facts_submitted">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=correctPresentedFacts=true</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_0qxvie4" name="No" sourceRef="gateway_valid_facts" targetRef="gateway_valid_facts_join">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=correctPresentedFacts=false</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:exclusiveGateway id="gateway_valid_facts_join">
+        <bpmn:incoming>Flow_1dqoqjn</bpmn:incoming>
+        <bpmn:incoming>Flow_0qxvie4</bpmn:incoming>
+        <bpmn:outgoing>Flow_1w2zjqh</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_1w2zjqh" sourceRef="gateway_valid_facts_join" targetRef="user_task_get_facts" />
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_1mby97e" sourceRef="message_event_cancel_creation" targetRef="end_event_creation_cancelled" />
+    <bpmn:sequenceFlow id="Flow_0mrmui2" sourceRef="message_event_cancel_negotiation" targetRef="end_event_decision_creation_postponed" />
+    <bpmn:boundaryEvent id="message_event_special_records_change_of_circumstances" name="Special records change of circumstances message received" attachedToRef="subprocess_special_records_creation">
+      <bpmn:extensionElements>
+        <zeebe:ioMapping>
+          <zeebe:output source="=false" target="requiredSpecialRecords" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_1jwkavj</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_11hfgyj" messageRef="Message_22fesbo" />
+    </bpmn:boundaryEvent>
+    <bpmn:boundaryEvent id="message_event_testimony_change_of_circumstances" name="Testimony change of circumstances message received" attachedToRef="subprocess_testimony_creation">
+      <bpmn:extensionElements>
+        <zeebe:ioMapping>
+          <zeebe:output source="=false" target="requiredTestimony" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_1ksyqls</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1gyllb2" messageRef="Message_0cisr5u" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1ksyqls" sourceRef="message_event_testimony_change_of_circumstances" targetRef="gateway_testimony_needed_join" />
+    <bpmn:boundaryEvent id="message_event_expert_report_change_of_circumstances" name="Expert report change of circumstances message received" attachedToRef="subprocess_expert_report_creation">
+      <bpmn:extensionElements>
+        <zeebe:ioMapping>
+          <zeebe:output source="=false" target="requiredExpertReport" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_10vy9w2</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1ed7krf" messageRef="Message_3jq79n2" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_10vy9w2" sourceRef="message_event_expert_report_change_of_circumstances" targetRef="gateway_expert_report_needed_join" />
+    <bpmn:sequenceFlow id="Flow_1um4j4h" sourceRef="script_task_resolve_testimonies" targetRef="gateway_testimony_needed_join" />
+    <bpmn:sequenceFlow id="Flow_0fgmsn2" sourceRef="gateway_testimony_needed_join" targetRef="gateway_additional_information_join" />
+    <bpmn:sequenceFlow id="Flow_1wlyc60" sourceRef="message_event_proceedings_participation_change_of_circumstances" targetRef="gateway_proceedings_participation_needed_join" />
+    <bpmn:sequenceFlow id="Flow_1ginyzm" sourceRef="script_task_resolve_participant_contributions" targetRef="gateway_proceedings_participation_needed_join" />
+    <bpmn:sequenceFlow id="Flow_1xye2nl" sourceRef="gateway_proceedings_participation_needed_join" targetRef="gateway_additional_information_join" />
+    <bpmn:parallelGateway id="gateway_additional_information_join">
+      <bpmn:incoming>Flow_1g18sel</bpmn:incoming>
+      <bpmn:incoming>Flow_0iigwvk</bpmn:incoming>
+      <bpmn:incoming>Flow_0fgmsn2</bpmn:incoming>
+      <bpmn:incoming>Flow_1xye2nl</bpmn:incoming>
+      <bpmn:outgoing>Flow_0knl799</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:scriptTask id="script_task_resolve_testimonies" name="Resolve testimonies">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="resolveTestimonies" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0yux4qu</bpmn:incoming>
+      <bpmn:outgoing>Flow_1um4j4h</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:boundaryEvent id="message_event_cancel_creation" name="Official decision creation canceling message received" attachedToRef="subprocess_validating_facts">
+      <bpmn:outgoing>Flow_1mby97e</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_01eo79b" messageRef="Message_3p9ahkb" />
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="end_event_creation_cancelled" name="Official decision creation is cancelled">
+      <bpmn:incoming>Flow_1mby97e</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="user_task_create_official_decision" name="Create official decision">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_3gk6k5u" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=taxAmount" target="taxAmount" />
+          <zeebe:output source="=taxJustification" target="taxJustification" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_11uo92z</bpmn:incoming>
+      <bpmn:outgoing>Flow_1oyh9za</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="gateway_sufficient_fatcs_join">
+      <bpmn:incoming>Flow_0wlcwem</bpmn:incoming>
+      <bpmn:incoming>Flow_0kdemr1</bpmn:incoming>
+      <bpmn:incoming>Flow_1vwlahs</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ft9r5l</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="gateway_tax_negotiation_needed_join">
+      <bpmn:incoming>Flow_1wxsmms</bpmn:incoming>
+      <bpmn:incoming>Flow_1gwhtv7</bpmn:incoming>
+      <bpmn:outgoing>Flow_0wlcwem</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="user_task_check_final_decision_values" name="Check final decision values">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_03huedr" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=requiredDecisionValuesUpdate" target="requiredDecisionValuesUpdate" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ft9r5l</bpmn:incoming>
+      <bpmn:outgoing>Flow_1awr000</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="user_task_update_final_decision_values" name="Update final decision values">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_33bgaqg" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=personName" target="personName" />
+          <zeebe:output source="=personAddress" target="personAddress" />
+          <zeebe:output source="=personEmail" target="personEmail" />
+          <zeebe:output source="=personPhone" target="personPhone" />
+          <zeebe:output source="=additionalInformation" target="additionalInformation" />
+          <zeebe:output source="=presentedFacts" target="presentedFacts" />
+          <zeebe:output source="=if requiredTestimony then witnessName else &#34;&#34;" target="witnessName" />
+          <zeebe:output source="=if requiredTestimony then testimonies else &#34;&#34;" target="testimonies" />
+          <zeebe:output source="=if requiredExpertReport then expertReport else &#34;&#34;" target="expertReport" />
+          <zeebe:output source="=if requiredSpecialRecords then specialRecords else &#34;&#34;" target="specialRecords" />
+          <zeebe:output source="=if requiredThirdPersonParticipation then participantContributions else &#34;&#34;" target="participantContributions" />
+          <zeebe:output source="=if requiredTaxNegotiation then negotiatedTaxValue else &#34;&#34;" target="negotiatedTaxValue" />
+          <zeebe:output source="=if requiredTaxNegotiation then negotiatedTaxJustification else &#34;&#34;" target="negotiatedTaxJustification" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ufedhu</bpmn:incoming>
+      <bpmn:outgoing>Flow_0kdemr1</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="gateway_decision_values_correct" name="Are final decision values correct and sufficient?">
+      <bpmn:incoming>Flow_1awr000</bpmn:incoming>
+      <bpmn:outgoing>Flow_11uo92z</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0ufedhu</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="service_task_genereate_official_decision" name="Generate official decision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="generatingDecision" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=decisionFileName" target="decisionFileName" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1oyh9za</bpmn:incoming>
+      <bpmn:outgoing>Flow_0lksktp</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="user_task_publish_official_decision" name="Publish official decision">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_33qeejp" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0lksktp</bpmn:incoming>
+      <bpmn:outgoing>Flow_07v89mj</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="user_task_get_proceedings_cost_paid" name="Get proceedings cost paid">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_0mcefda" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=proceedingCostPaymentId" target="proceedingCostPaymentId" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_07v89mj</bpmn:incoming>
+      <bpmn:outgoing>Flow_13kwouj</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="end_event_decision_created" name="Official decision is created">
+      <bpmn:incoming>Flow_13kwouj</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="user_task_check_added_information" name="Check added information">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_1esq5sd" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=requiredTaxNegotiation" target="requiredTaxNegotiation" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0knl799</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fawwid</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="gateway_tax_negotiation_needed" name="Is added information sufficient?">
+      <bpmn:incoming>Flow_0fawwid</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wxsmms</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0sptwi4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:subProcess id="subprocess_tax_negotiation" name="Tax negotiatiation">
+      <bpmn:incoming>Flow_0sptwi4</bpmn:incoming>
+      <bpmn:outgoing>Flow_1gwhtv7</bpmn:outgoing>
+      <bpmn:startEvent id="start_event_tax_negotiation" name="Start tax negotiation process">
+        <bpmn:outgoing>Flow_1ujy0lh</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_1ujy0lh" sourceRef="start_event_tax_negotiation" targetRef="user_task_get_negotiated_tax" />
+      <bpmn:endEvent id="end_event_tax_negotiated" name="Tax is negotiated">
+        <bpmn:incoming>Flow_11d1q98</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_11d1q98" sourceRef="user_task_get_negotiated_tax" targetRef="end_event_tax_negotiated" />
+      <bpmn:userTask id="user_task_get_negotiated_tax" name="Get negotiated tax">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_0n5e61e" />
+          <zeebe:ioMapping>
+            <zeebe:output source="=negotiatedTaxValue" target="negotiatedTaxValue" />
+            <zeebe:output source="=negotiatedTaxJustification" target="negotiatedTaxJustification" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1ujy0lh</bpmn:incoming>
+        <bpmn:outgoing>Flow_11d1q98</bpmn:outgoing>
+      </bpmn:userTask>
+    </bpmn:subProcess>
+    <bpmn:boundaryEvent id="message_event_cancel_negotiation" name="Tax negotiation cancelling message received" attachedToRef="subprocess_tax_negotiation">
+      <bpmn:outgoing>Flow_0mrmui2</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_05uhi2l" messageRef="Message_1ts1inh" />
+    </bpmn:boundaryEvent>
+    <bpmn:exclusiveGateway id="gateway_proceedings_participation_needed" name="Is proceedings participant needed?">
+      <bpmn:incoming>Flow_0zeztn4</bpmn:incoming>
+      <bpmn:outgoing>Flow_0cmuiao</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1vx28ui</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:scriptTask id="script_task_resolve_participant_contributions" name="Resolve participant contributions">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="resolveParticipantContributions" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1iarqaa</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ginyzm</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:subProcess id="subprocess_proceedings_participation" name="Proceedings participantion">
+      <bpmn:incoming>Flow_0cmuiao</bpmn:incoming>
+      <bpmn:outgoing>Flow_1iarqaa</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+        <bpmn:extensionElements>
+          <zeebe:loopCharacteristics inputCollection="=participantNameList" inputElement="participantName" outputCollection="participantContributionList" outputElement="=participantContribution" />
+        </bpmn:extensionElements>
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="start_event_proceedings_participation" name="Start person proceedings participation">
+        <bpmn:extensionElements>
+          <zeebe:ioMapping>
+            <zeebe:output source="=&#34;&#34;" target="participantAddress" />
+            <zeebe:output source="=&#34;&#34;" target="participantEmail" />
+            <zeebe:output source="=&#34;&#34;" target="participantPhone" />
+            <zeebe:output source="=&#34;&#34;" target="matterOfParticipation" />
+            <zeebe:output source="=false" target="requiredParticipantAttachment" />
+            <zeebe:output source="=&#34;&#34;" target="participantContribution" />
+            <zeebe:output source="=false" target="requiredCompensationPayment" />
+            <zeebe:output source="=&#34;&#34;" target="compensationPaymentAmount" />
+            <zeebe:output source="=&#34;&#34;" target="participantCompensationPaymentId" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:outgoing>Flow_1rioyx9</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_1rioyx9" sourceRef="start_event_proceedings_participation" targetRef="user_task_fill_in_proceedings_participant_information" />
+      <bpmn:exclusiveGateway id="gateway_summons_accepted" name="Does participant accept summons?">
+        <bpmn:incoming>Flow_0mijlkx</bpmn:incoming>
+        <bpmn:outgoing>Flow_1v04m4s</bpmn:outgoing>
+        <bpmn:outgoing>Flow_00nnsfb</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_0mijlkx" sourceRef="user_task_summon_participant" targetRef="gateway_summons_accepted" />
+      <bpmn:sequenceFlow id="Flow_1v04m4s" name="Yes" sourceRef="gateway_summons_accepted" targetRef="gateway_summons_accepted_join">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredParticipantAttachment = false</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:exclusiveGateway id="gateway_summons_accepted_join">
+        <bpmn:incoming>Flow_1v04m4s</bpmn:incoming>
+        <bpmn:incoming>Flow_08q5or0</bpmn:incoming>
+        <bpmn:outgoing>Flow_1hrq1yc</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_1hrq1yc" sourceRef="gateway_summons_accepted_join" targetRef="user_task_get_participant_contribution" />
+      <bpmn:sequenceFlow id="Flow_00nnsfb" name="No" sourceRef="gateway_summons_accepted" targetRef="user_task_attach_participant">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredParticipantAttachment = true</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_08q5or0" sourceRef="user_task_attach_participant" targetRef="gateway_summons_accepted_join" />
+      <bpmn:userTask id="user_task_summon_participant" name="Summon participant">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_39sf35e" />
+          <zeebe:ioMapping>
+            <zeebe:output source="=requiredParticipantAttachment" target="requiredParticipantAttachment" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1pvzvwz</bpmn:incoming>
+        <bpmn:outgoing>Flow_0mijlkx</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:userTask id="user_task_attach_participant" name="Attach participant">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_1660ara" />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_00nnsfb</bpmn:incoming>
+        <bpmn:outgoing>Flow_08q5or0</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:userTask id="user_task_get_participant_contribution" name="Get participant contribution">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_3j3h3l9" />
+          <zeebe:ioMapping>
+            <zeebe:output source="=participantContribution" target="participantContribution" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1hrq1yc</bpmn:incoming>
+        <bpmn:outgoing>Flow_0vgni3m</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:endEvent id="end_event_participant_participated" name="Participant participated in the proceedings">
+        <bpmn:incoming>Flow_0w3yxfe</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0vgni3m" sourceRef="user_task_get_participant_contribution" targetRef="user_task_assess_entitlement_to_compensation" />
+      <bpmn:sequenceFlow id="Flow_1fxi26k" sourceRef="user_task_assess_entitlement_to_compensation" targetRef="gateway_compensation_payment_needed" />
+      <bpmn:userTask id="user_task_assess_entitlement_to_compensation" name="Assess entitlement to compensation">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_2h6b1e5" />
+          <zeebe:ioMapping>
+            <zeebe:output source="=requiredCompensationPayment" target="requiredCompensationPayment" />
+            <zeebe:output source="=if requiredCompensationPayment then compensationPaymentAmount else &#34;&#34;" target="compensationPaymentAmount" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0vgni3m</bpmn:incoming>
+        <bpmn:outgoing>Flow_1fxi26k</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:sequenceFlow id="Flow_1pvzvwz" sourceRef="user_task_fill_in_proceedings_participant_information" targetRef="user_task_summon_participant" />
+      <bpmn:userTask id="user_task_fill_in_proceedings_participant_information" name="Save proceedings participant information">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_0ak1b0j" />
+          <zeebe:ioMapping>
+            <zeebe:output source="=participantName" target="participantName" />
+            <zeebe:output source="=participantAddress" target="participantAddress" />
+            <zeebe:output source="=participantEmail" target="participantEmail" />
+            <zeebe:output source="=participantPhone" target="participantPhone" />
+            <zeebe:output source="=matterOfParticipation" target="matterOfParticipation" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1rioyx9</bpmn:incoming>
+        <bpmn:outgoing>Flow_1pvzvwz</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:exclusiveGateway id="gateway_compensation_payment_needed" name="Does participant has entitlement to compensation?">
+        <bpmn:incoming>Flow_1fxi26k</bpmn:incoming>
+        <bpmn:outgoing>Flow_15001a8</bpmn:outgoing>
+        <bpmn:outgoing>Flow_0unaw7d</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_15001a8" name="No" sourceRef="gateway_compensation_payment_needed" targetRef="gateway_compensation_payment_needed_join">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredCompensationPayment = false</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:exclusiveGateway id="gateway_compensation_payment_needed_join">
+        <bpmn:incoming>Flow_15001a8</bpmn:incoming>
+        <bpmn:incoming>Flow_1ugwl38</bpmn:incoming>
+        <bpmn:outgoing>Flow_0w3yxfe</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_0w3yxfe" sourceRef="gateway_compensation_payment_needed_join" targetRef="end_event_participant_participated" />
+      <bpmn:sequenceFlow id="Flow_0unaw7d" name="Yes" sourceRef="gateway_compensation_payment_needed" targetRef="user_task_pay_compensation">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requiredCompensationPayment = true</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_1ugwl38" sourceRef="user_task_pay_compensation" targetRef="gateway_compensation_payment_needed_join" />
+      <bpmn:userTask id="user_task_pay_compensation" name="Pay compensation">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_01hvcqo" />
+          <zeebe:ioMapping>
+            <zeebe:output source="=participantCompensationPaymentId" target="participantCompensationPaymentId" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0unaw7d</bpmn:incoming>
+        <bpmn:outgoing>Flow_1ugwl38</bpmn:outgoing>
+      </bpmn:userTask>
+    </bpmn:subProcess>
+    <bpmn:boundaryEvent id="message_event_proceedings_participation_change_of_circumstances" name="Proceedings participation change of circumstances message received" attachedToRef="subprocess_proceedings_participation">
+      <bpmn:extensionElements>
+        <zeebe:ioMapping>
+          <zeebe:output source="=false" target="requiredThirdPersonParticipation" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_1wlyc60</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_15shm6v" messageRef="Message_30cdlqq" />
+    </bpmn:boundaryEvent>
+    <bpmn:exclusiveGateway id="gateway_proceedings_participation_needed_join">
+      <bpmn:incoming>Flow_1vx28ui</bpmn:incoming>
+      <bpmn:incoming>Flow_1wlyc60</bpmn:incoming>
+      <bpmn:incoming>Flow_1ginyzm</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xye2nl</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="gateway_expert_report_needed_join">
+      <bpmn:incoming>Flow_18kphbc</bpmn:incoming>
+      <bpmn:incoming>Flow_0osb2uz</bpmn:incoming>
+      <bpmn:incoming>Flow_10vy9w2</bpmn:incoming>
+      <bpmn:outgoing>Flow_1g18sel</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="gateway_testimony_needed_join">
+      <bpmn:incoming>Flow_0q5jqen</bpmn:incoming>
+      <bpmn:incoming>Flow_1ksyqls</bpmn:incoming>
+      <bpmn:incoming>Flow_1um4j4h</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fgmsn2</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_11lqq6r" sourceRef="user_task_start_official_decision_creation" targetRef="script_task_initialize_creation" />
+    <bpmn:sequenceFlow id="Flow_19bttjg" sourceRef="user_task_save_additional_information" targetRef="subprocess_validating_facts" />
+    <bpmn:sequenceFlow id="Flow_1q257q9" sourceRef="script_task_initialize_creation" targetRef="user_task_save_additional_information" />
+    <bpmn:scriptTask id="script_task_initialize_creation" name="Initialize creation">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="initialization" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=decisionId" target="decisionId" />
+          <zeebe:output source="=&#34;&#34;" target="witnessName" />
+          <zeebe:output source="=&#34;&#34;" target="testimonies" />
+          <zeebe:output source="=&#34;&#34;" target="expertReport" />
+          <zeebe:output source="=&#34;&#34;" target="specialRecords" />
+          <zeebe:output source="=&#34;&#34;" target="participantContributions" />
+          <zeebe:output source="=&#34;&#34;" target="negotiatedTaxValue" />
+          <zeebe:output source="=&#34;&#34;" target="negotiatedTaxJustification" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_11lqq6r</bpmn:incoming>
+      <bpmn:outgoing>Flow_1q257q9</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:endEvent id="end_event_decision_creation_postponed" name="Official decision creation is postponed">
+      <bpmn:incoming>Flow_0mrmui2</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmn:message id="Message_3p9ahkb" name="cancelOfficialDecisionCreation">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=decisionId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:message id="Message_22fesbo" name="specialRecordsChangeOfCircumstances">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=decisionId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:message id="Message_1ts1inh" name="taxNegotiationCancelation">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=decisionId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:message id="Message_0cisr5u" name="testimonychangeOfCircumstances">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=decisionId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:message id="Message_3jq79n2" name="expertReportchangeOfCircumstances">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=decisionId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:message id="Message_30cdlqq" name="proceedingsParticipationChangeOfCircumstances">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=decisionId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1rl67lj">
+      <bpmndi:BPMNShape id="Participant_0mvuhj4_di" bpmnElement="Participant_0mvuhj4" isHorizontal="true">
+        <dc:Bounds x="150" y="60" width="4780" height="1440" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_131zg59_di" bpmnElement="start_event_tax_management">
+        <dc:Bounds x="232" y="222" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="208" y="265" width="84" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1xcmnzo_di" bpmnElement="user_task_start_official_decision_creation">
+        <dc:Bounds x="300" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0js2jvj_di" bpmnElement="gateway_special_records_needed" isMarkerVisible="true">
+        <dc:Bounds x="1755" y="855" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1740" y="826" width="83" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ya0u4n_di" bpmnElement="user_task_save_additional_information">
+        <dc:Bounds x="580" y="200" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_105ne5h_di" bpmnElement="gateway_sufficient_facts" isMarkerVisible="true">
+        <dc:Bounds x="1585" y="215" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1574" y="186" width="72" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1di5oep_di" bpmnElement="user_task_check_facts_sufficiency">
+        <dc:Bounds x="1450" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0b88nc8_di" bpmnElement="gateway_testimony_needed" isMarkerVisible="true">
+        <dc:Bounds x="1755" y="335" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1752" y="296" width="60" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0r79u4x_di" bpmnElement="gateway_additional_information">
+        <dc:Bounds x="1585" y="705" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_098wq4o_di" bpmnElement="gateway_expert_report_needed" isMarkerVisible="true">
+        <dc:Bounds x="1755" y="595" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1745" y="566" width="74" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1kxzewk_di" bpmnElement="subprocess_special_records_creation" isExpanded="true">
+        <dc:Bounds x="1860" y="780" width="890" height="260" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0cj2w17_di" bpmnElement="start_event_special_records_creation">
+        <dc:Bounds x="1886" y="862" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1865" y="905" width="79" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0sx2z93_di" bpmnElement="end_event_special_records_created">
+        <dc:Bounds x="2682" y="862" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2660" y="906" width="77" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02f7mcb_di" bpmnElement="user_task_notify_tax_subject_about_special_records_creation">
+        <dc:Bounds x="2100" y="840" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1gmujmv_di" bpmnElement="user_task_collect_special_records">
+        <dc:Bounds x="2420" y="840" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_18cvqdr_di" bpmnElement="timer_event_special_records">
+        <dc:Bounds x="2352" y="862" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2336" y="905" width="69" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1eokgw4_di" bpmnElement="gateway_special_records_correct" isMarkerVisible="true">
+        <dc:Bounds x="2576" y="855" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2561" y="816" width="82" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0soa8wq_di" bpmnElement="gateway_special_records_correct_join" isMarkerVisible="true">
+        <dc:Bounds x="2272" y="855" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_174msks_di" bpmnElement="user_task_enlighten_special_records_creator">
+        <dc:Bounds x="2420" y="940" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0s88haf_di" bpmnElement="user_task_save_special_records_information">
+        <dc:Bounds x="1960" y="840" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0o8u6mz_di" bpmnElement="Flow_0o8u6mz">
+        <di:waypoint x="1922" y="880" />
+        <di:waypoint x="1960" y="880" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08fjhyw_di" bpmnElement="Flow_08fjhyw">
+        <di:waypoint x="2200" y="880" />
+        <di:waypoint x="2272" y="880" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13z2o1u_di" bpmnElement="Flow_13z2o1u">
+        <di:waypoint x="2626" y="880" />
+        <di:waypoint x="2682" y="880" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2637" y="864" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vmm295_di" bpmnElement="Flow_1vmm295">
+        <di:waypoint x="2601" y="905" />
+        <di:waypoint x="2601" y="980" />
+        <di:waypoint x="2520" y="980" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2582" y="915" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08npyla_di" bpmnElement="Flow_08npyla">
+        <di:waypoint x="2420" y="980" />
+        <di:waypoint x="2297" y="980" />
+        <di:waypoint x="2297" y="905" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wtvh1k_di" bpmnElement="Flow_0wtvh1k">
+        <di:waypoint x="2520" y="880" />
+        <di:waypoint x="2576" y="880" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_187tii7_di" bpmnElement="Flow_187tii7">
+        <di:waypoint x="2322" y="880" />
+        <di:waypoint x="2352" y="880" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01bhfx5_di" bpmnElement="Flow_01bhfx5">
+        <di:waypoint x="2388" y="880" />
+        <di:waypoint x="2420" y="880" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rznk3o_di" bpmnElement="Flow_1rznk3o">
+        <di:waypoint x="2060" y="880" />
+        <di:waypoint x="2100" y="880" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_1247vvc_di" bpmnElement="subprocess_testimony_creation" isExpanded="true">
+        <dc:Bounds x="1860" y="260" width="630" height="200" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_05pms74_di" bpmnElement="start_event_testimony_creation">
+        <dc:Bounds x="1900" y="342" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1878" y="385" width="82" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05youuq_di" bpmnElement="user_task_save_testimony_information">
+        <dc:Bounds x="1980" y="320" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0u0kq8g_di" bpmnElement="user_task_get_testimony">
+        <dc:Bounds x="2270" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0rlnqve_di" bpmnElement="end_event_testimony_created">
+        <dc:Bounds x="2412" y="342" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2399" y="385" width="62" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10sb99r_di" bpmnElement="user_task_notify_tax_subject_about_testimony">
+        <dc:Bounds x="2130" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0878bgp_di" bpmnElement="Flow_0878bgp">
+        <di:waypoint x="1936" y="360" />
+        <di:waypoint x="1980" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15n3zhc_di" bpmnElement="Flow_15n3zhc">
+        <di:waypoint x="2080" y="360" />
+        <di:waypoint x="2130" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1v1wiri_di" bpmnElement="Flow_1v1wiri">
+        <di:waypoint x="2370" y="360" />
+        <di:waypoint x="2412" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dmd8k6_di" bpmnElement="Flow_0dmd8k6">
+        <di:waypoint x="2230" y="360" />
+        <di:waypoint x="2270" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_0dvwypn_di" bpmnElement="subprocess_expert_report_creation" isExpanded="true">
+        <dc:Bounds x="1860" y="520" width="490" height="200" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_126d3rp_di" bpmnElement="start_event_expert_report_creation">
+        <dc:Bounds x="1900" y="602" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1883" y="645" width="71" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1lqxlej_di" bpmnElement="user_task_create_expert_report">
+        <dc:Bounds x="2055" y="580" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0hpc9g4_di" bpmnElement="end_event_expert_report_created">
+        <dc:Bounds x="2282" y="602" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2262" y="645" width="76" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_14autg5_di" bpmnElement="Flow_14autg5">
+        <di:waypoint x="1936" y="620" />
+        <di:waypoint x="2055" y="620" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13zcgyj_di" bpmnElement="Flow_13zcgyj">
+        <di:waypoint x="2155" y="620" />
+        <di:waypoint x="2282" y="620" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Gateway_1i74ra2_di" bpmnElement="gateway_special_records_needed_join" isMarkerVisible="true">
+        <dc:Bounds x="3075" y="855" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_00ocpbz_di" bpmnElement="subprocess_validating_facts" isExpanded="true">
+        <dc:Bounds x="740" y="140" width="650" height="210" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ua2evh_di" bpmnElement="start_event_validating_facts">
+        <dc:Bounds x="765" y="199" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="745" y="242" width="89" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09q29zz_di" bpmnElement="user_task_get_facts">
+        <dc:Bounds x="915" y="177" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0660ibs_di" bpmnElement="user_task_validate_facts">
+        <dc:Bounds x="1055" y="177" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_01i4qoo_di" bpmnElement="end_event_facts_submitted">
+        <dc:Bounds x="1327" y="199" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1309" y="242" width="72" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0dboegh_di" bpmnElement="gateway_valid_facts" isMarkerVisible="true">
+        <dc:Bounds x="1200" y="192" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1185" y="173" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0nlqopp_di" bpmnElement="gateway_valid_facts_join" isMarkerVisible="true">
+        <dc:Bounds x="830" y="192" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1dqoqjn_di" bpmnElement="Flow_1dqoqjn">
+        <di:waypoint x="801" y="217" />
+        <di:waypoint x="830" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ps1srv_di" bpmnElement="Flow_0ps1srv">
+        <di:waypoint x="1015" y="217" />
+        <di:waypoint x="1055" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1s4gsly_di" bpmnElement="Flow_1s4gsly">
+        <di:waypoint x="1155" y="217" />
+        <di:waypoint x="1200" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0rmha46_di" bpmnElement="Flow_0rmha46">
+        <di:waypoint x="1250" y="217" />
+        <di:waypoint x="1327" y="217" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1279" y="199" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0qxvie4_di" bpmnElement="Flow_0qxvie4">
+        <di:waypoint x="1225" y="242" />
+        <di:waypoint x="1225" y="322" />
+        <di:waypoint x="855" y="322" />
+        <di:waypoint x="855" y="242" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1197" y="265" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1w2zjqh_di" bpmnElement="Flow_1w2zjqh">
+        <di:waypoint x="880" y="217" />
+        <di:waypoint x="915" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Gateway_1brpqe8_di" bpmnElement="gateway_additional_information_join">
+        <dc:Bounds x="3265" y="705" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1r4vasq_di" bpmnElement="script_task_resolve_testimonies">
+        <dc:Bounds x="2620" y="320" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0kbj1a7_di" bpmnElement="end_event_creation_cancelled">
+        <dc:Bounds x="1482" y="332" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1462" y="375" width="77" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ique9e_di" bpmnElement="user_task_create_official_decision">
+        <dc:Bounds x="4250" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0a4010y_di" bpmnElement="gateway_sufficient_fatcs_join" isMarkerVisible="true">
+        <dc:Bounds x="3905" y="215" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1bh8u39_di" bpmnElement="gateway_tax_negotiation_needed_join" isMarkerVisible="true">
+        <dc:Bounds x="3905" y="705" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0cuei5p_di" bpmnElement="user_task_check_final_decision_values">
+        <dc:Bounds x="4000" y="200" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1edrmwp_di" bpmnElement="user_task_update_final_decision_values">
+        <dc:Bounds x="4000" y="320" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_16w7a5j_di" bpmnElement="gateway_decision_values_correct" isMarkerVisible="true">
+        <dc:Bounds x="4145" y="215" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="4125" y="164" width="90" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0s8a016_di" bpmnElement="service_task_genereate_official_decision">
+        <dc:Bounds x="4400" y="200" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1sj1ym0_di" bpmnElement="user_task_publish_official_decision">
+        <dc:Bounds x="4550" y="200" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1upwt9s_di" bpmnElement="user_task_get_proceedings_cost_paid">
+        <dc:Bounds x="4690" y="200" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0637e9i_di" bpmnElement="end_event_decision_created">
+        <dc:Bounds x="4830" y="222" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="4810" y="265" width="77" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1oh1brp_di" bpmnElement="user_task_check_added_information">
+        <dc:Bounds x="3350" y="690" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1lpb7d9_di" bpmnElement="gateway_tax_negotiation_needed" isMarkerVisible="true">
+        <dc:Bounds x="3495" y="705" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3493" y="660" width="55" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0y8x907_di" bpmnElement="subprocess_tax_negotiation" isExpanded="true">
+        <dc:Bounds x="3560" y="790" width="321" height="180" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1uhshvd_di" bpmnElement="start_event_tax_negotiation">
+        <dc:Bounds x="3600" y="872" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3591" y="915" width="54" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1acbpdt_di" bpmnElement="end_event_tax_negotiated">
+        <dc:Bounds x="3812" y="872" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3789" y="915" width="83" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vkpmh1_di" bpmnElement="user_task_get_negotiated_tax">
+        <dc:Bounds x="3670" y="850" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1ujy0lh_di" bpmnElement="Flow_1ujy0lh">
+        <di:waypoint x="3636" y="890" />
+        <di:waypoint x="3670" y="890" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11d1q98_di" bpmnElement="Flow_11d1q98">
+        <di:waypoint x="3770" y="890" />
+        <di:waypoint x="3812" y="890" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Gateway_0lvouxn_di" bpmnElement="gateway_proceedings_participation_needed" isMarkerVisible="true">
+        <dc:Bounds x="1755" y="1175" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1745" y="1130" width="73" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05regdy_di" bpmnElement="script_task_resolve_participant_contributions">
+        <dc:Bounds x="3140" y="1160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1muad43_di" bpmnElement="subprocess_proceedings_participation" isExpanded="true">
+        <dc:Bounds x="1860" y="1100" width="1240" height="300" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_103gtvv_di" bpmnElement="start_event_proceedings_participation">
+        <dc:Bounds x="1888" y="1182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1876" y="1225" width="61" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1583kms_di" bpmnElement="gateway_summons_accepted" isMarkerVisible="true">
+        <dc:Bounds x="2215" y="1175" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2195" y="1138" width="90" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1y24wq4_di" bpmnElement="gateway_summons_accepted_join" isMarkerVisible="true">
+        <dc:Bounds x="2391" y="1175" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vpjr3u_di" bpmnElement="user_task_summon_participant">
+        <dc:Bounds x="2078" y="1160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1cs9j02_di" bpmnElement="user_task_attach_participant">
+        <dc:Bounds x="2279" y="1270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03ccllk_di" bpmnElement="user_task_get_participant_contribution">
+        <dc:Bounds x="2479" y="1160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0iyotzd_di" bpmnElement="end_event_participant_participated">
+        <dc:Bounds x="3032" y="1182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3010" y="1240" width="79" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1qfa5q9_di" bpmnElement="user_task_assess_entitlement_to_compensation">
+        <dc:Bounds x="2620" y="1160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1abgosz_di" bpmnElement="user_task_fill_in_proceedings_participant_information">
+        <dc:Bounds x="1950" y="1160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1mj3zy5_di" bpmnElement="gateway_compensation_payment_needed" isMarkerVisible="true">
+        <dc:Bounds x="2755" y="1175" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2737" y="1132" width="87" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_08uvy43_di" bpmnElement="gateway_compensation_payment_needed_join" isMarkerVisible="true">
+        <dc:Bounds x="2935" y="1175" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1k7xm0b_di" bpmnElement="user_task_pay_compensation">
+        <dc:Bounds x="2820" y="1270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1rioyx9_di" bpmnElement="Flow_1rioyx9">
+        <di:waypoint x="1924" y="1200" />
+        <di:waypoint x="1950" y="1200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mijlkx_di" bpmnElement="Flow_0mijlkx">
+        <di:waypoint x="2178" y="1200" />
+        <di:waypoint x="2215" y="1200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1v04m4s_di" bpmnElement="Flow_1v04m4s">
+        <di:waypoint x="2265" y="1200" />
+        <di:waypoint x="2391" y="1200" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2319" y="1182" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hrq1yc_di" bpmnElement="Flow_1hrq1yc">
+        <di:waypoint x="2441" y="1200" />
+        <di:waypoint x="2479" y="1200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00nnsfb_di" bpmnElement="Flow_00nnsfb">
+        <di:waypoint x="2240" y="1225" />
+        <di:waypoint x="2240" y="1310" />
+        <di:waypoint x="2279" y="1310" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2248" y="1233" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08q5or0_di" bpmnElement="Flow_08q5or0">
+        <di:waypoint x="2379" y="1310" />
+        <di:waypoint x="2416" y="1310" />
+        <di:waypoint x="2416" y="1225" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vgni3m_di" bpmnElement="Flow_0vgni3m">
+        <di:waypoint x="2579" y="1200" />
+        <di:waypoint x="2620" y="1200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fxi26k_di" bpmnElement="Flow_1fxi26k">
+        <di:waypoint x="2720" y="1200" />
+        <di:waypoint x="2755" y="1200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pvzvwz_di" bpmnElement="Flow_1pvzvwz">
+        <di:waypoint x="2050" y="1200" />
+        <di:waypoint x="2078" y="1200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15001a8_di" bpmnElement="Flow_15001a8">
+        <di:waypoint x="2805" y="1200" />
+        <di:waypoint x="2935" y="1200" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2822" y="1182" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0w3yxfe_di" bpmnElement="Flow_0w3yxfe">
+        <di:waypoint x="2985" y="1200" />
+        <di:waypoint x="3032" y="1200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0unaw7d_di" bpmnElement="Flow_0unaw7d">
+        <di:waypoint x="2780" y="1225" />
+        <di:waypoint x="2780" y="1310" />
+        <di:waypoint x="2820" y="1310" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2786" y="1233" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ugwl38_di" bpmnElement="Flow_1ugwl38">
+        <di:waypoint x="2920" y="1310" />
+        <di:waypoint x="2960" y="1310" />
+        <di:waypoint x="2960" y="1225" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Gateway_153ap6b_di" bpmnElement="gateway_proceedings_participation_needed_join" isMarkerVisible="true">
+        <dc:Bounds x="3265" y="1175" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0f2k5yv_di" bpmnElement="gateway_expert_report_needed_join" isMarkerVisible="true">
+        <dc:Bounds x="3075" y="595" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0tdbpdc_di" bpmnElement="gateway_testimony_needed_join" isMarkerVisible="true">
+        <dc:Bounds x="3075" y="335" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0lpig9j_di" bpmnElement="script_task_initialize_creation">
+        <dc:Bounds x="440" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_034sf6i_di" bpmnElement="end_event_decision_creation_postponed">
+        <dc:Bounds x="4032" y="946" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="4012" y="989" width="77" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0uofsfi_di" bpmnElement="message_event_proceedings_participation_change_of_circumstances">
+        <dc:Bounds x="3082" y="1382" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3125" y="1327" width="90" height="66" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1dptjx0_di" bpmnElement="message_event_cancel_negotiation">
+        <dc:Bounds x="3863" y="946" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3841" y="989" width="90" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_00wlb0w_di" bpmnElement="message_event_cancel_creation">
+        <dc:Bounds x="1372" y="332" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1345" y="368" width="90" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0gq1peo_di" bpmnElement="message_event_expert_report_change_of_circumstances">
+        <dc:Bounds x="2332" y="702" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2375" y="663" width="90" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0h0umip_di" bpmnElement="message_event_testimony_change_of_circumstances">
+        <dc:Bounds x="2472" y="442" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2515" y="416" width="90" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0hbnqf2_di" bpmnElement="message_event_special_records_change_of_circumstances">
+        <dc:Bounds x="2732" y="1022" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2775" y="982" width="90" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0cmuiao_di" bpmnElement="Flow_0cmuiao">
+        <di:waypoint x="1805" y="1200" />
+        <di:waypoint x="1860" y="1200" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1823" y="1182" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fm3gkm_di" bpmnElement="Flow_0fm3gkm">
+        <di:waypoint x="1805" y="880" />
+        <di:waypoint x="1860" y="880" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1823" y="862" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xifs9u_di" bpmnElement="Flow_1xifs9u">
+        <di:waypoint x="1550" y="240" />
+        <di:waypoint x="1585" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0q5jqen_di" bpmnElement="Flow_0q5jqen">
+        <di:waypoint x="1780" y="385" />
+        <di:waypoint x="1780" y="490" />
+        <di:waypoint x="3100" y="490" />
+        <di:waypoint x="3100" y="385" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1792" y="400" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zeztn4_di" bpmnElement="Flow_0zeztn4">
+        <di:waypoint x="1635" y="730" />
+        <di:waypoint x="1680" y="730" />
+        <di:waypoint x="1680" y="1200" />
+        <di:waypoint x="1755" y="1200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0magwau_di" bpmnElement="Flow_0magwau">
+        <di:waypoint x="1635" y="730" />
+        <di:waypoint x="1680" y="730" />
+        <di:waypoint x="1680" y="360" />
+        <di:waypoint x="1755" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19vifl8_di" bpmnElement="Flow_19vifl8">
+        <di:waypoint x="1635" y="730" />
+        <di:waypoint x="1680" y="730" />
+        <di:waypoint x="1680" y="880" />
+        <di:waypoint x="1755" y="880" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0qu3yny_di" bpmnElement="Flow_0qu3yny">
+        <di:waypoint x="1610" y="265" />
+        <di:waypoint x="1610" y="705" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1618" y="293" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0edjzv7_di" bpmnElement="Flow_0edjzv7">
+        <di:waypoint x="1635" y="730" />
+        <di:waypoint x="1680" y="730" />
+        <di:waypoint x="1680" y="620" />
+        <di:waypoint x="1755" y="620" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0osb2uz_di" bpmnElement="Flow_0osb2uz">
+        <di:waypoint x="1780" y="645" />
+        <di:waypoint x="1780" y="750" />
+        <di:waypoint x="3100" y="750" />
+        <di:waypoint x="3100" y="645" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1792" y="665" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pmp2w9_di" bpmnElement="Flow_1pmp2w9">
+        <di:waypoint x="1390" y="240" />
+        <di:waypoint x="1450" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0yux4qu_di" bpmnElement="Flow_0yux4qu">
+        <di:waypoint x="2490" y="360" />
+        <di:waypoint x="2620" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00n3pjs_di" bpmnElement="Flow_00n3pjs">
+        <di:waypoint x="1805" y="360" />
+        <di:waypoint x="1860" y="360" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1823" y="342" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18kphbc_di" bpmnElement="Flow_18kphbc">
+        <di:waypoint x="2350" y="620" />
+        <di:waypoint x="3075" y="620" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0t66gk4_di" bpmnElement="Flow_0t66gk4">
+        <di:waypoint x="1805" y="620" />
+        <di:waypoint x="1860" y="620" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1823" y="602" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vx28ui_di" bpmnElement="Flow_1vx28ui">
+        <di:waypoint x="1780" y="1225" />
+        <di:waypoint x="1780" y="1430" />
+        <di:waypoint x="3290" y="1430" />
+        <di:waypoint x="3290" y="1225" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1792" y="1263" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1iarqaa_di" bpmnElement="Flow_1iarqaa">
+        <di:waypoint x="3100" y="1200" />
+        <di:waypoint x="3140" y="1200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1g18sel_di" bpmnElement="Flow_1g18sel">
+        <di:waypoint x="3125" y="620" />
+        <di:waypoint x="3290" y="620" />
+        <di:waypoint x="3290" y="705" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ufedhu_di" bpmnElement="Flow_0ufedhu">
+        <di:waypoint x="4170" y="265" />
+        <di:waypoint x="4170" y="360" />
+        <di:waypoint x="4100" y="360" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="4182" y="282" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1awr000_di" bpmnElement="Flow_1awr000">
+        <di:waypoint x="4100" y="240" />
+        <di:waypoint x="4145" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gwhtv7_di" bpmnElement="Flow_1gwhtv7">
+        <di:waypoint x="3881" y="890" />
+        <di:waypoint x="3930" y="890" />
+        <di:waypoint x="3930" y="755" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ft9r5l_di" bpmnElement="Flow_1ft9r5l">
+        <di:waypoint x="3955" y="240" />
+        <di:waypoint x="4000" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kdemr1_di" bpmnElement="Flow_0kdemr1">
+        <di:waypoint x="4000" y="360" />
+        <di:waypoint x="3930" y="360" />
+        <di:waypoint x="3930" y="265" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wlcwem_di" bpmnElement="Flow_0wlcwem">
+        <di:waypoint x="3930" y="705" />
+        <di:waypoint x="3930" y="265" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vwlahs_di" bpmnElement="Flow_1vwlahs">
+        <di:waypoint x="1635" y="240" />
+        <di:waypoint x="3905" y="240" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1745" y="222" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0sptwi4_di" bpmnElement="Flow_0sptwi4">
+        <di:waypoint x="3520" y="755" />
+        <di:waypoint x="3520" y="890" />
+        <di:waypoint x="3560" y="890" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3492" y="753" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wxsmms_di" bpmnElement="Flow_1wxsmms">
+        <di:waypoint x="3545" y="730" />
+        <di:waypoint x="3905" y="730" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3597" y="712" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fawwid_di" bpmnElement="Flow_0fawwid">
+        <di:waypoint x="3450" y="730" />
+        <di:waypoint x="3495" y="730" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0knl799_di" bpmnElement="Flow_0knl799">
+        <di:waypoint x="3315" y="730" />
+        <di:waypoint x="3350" y="730" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0iigwvk_di" bpmnElement="Flow_0iigwvk">
+        <di:waypoint x="3125" y="880" />
+        <di:waypoint x="3290" y="880" />
+        <di:waypoint x="3290" y="755" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jwkavj_di" bpmnElement="Flow_1jwkavj">
+        <di:waypoint x="2768" y="1040" />
+        <di:waypoint x="3100" y="1040" />
+        <di:waypoint x="3100" y="905" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pyxxll_di" bpmnElement="Flow_1pyxxll">
+        <di:waypoint x="1780" y="905" />
+        <di:waypoint x="1780" y="1070" />
+        <di:waypoint x="3100" y="1070" />
+        <di:waypoint x="3100" y="905" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1792" y="929" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0co6rvm_di" bpmnElement="Flow_0co6rvm">
+        <di:waypoint x="2750" y="880" />
+        <di:waypoint x="3075" y="880" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13kwouj_di" bpmnElement="Flow_13kwouj">
+        <di:waypoint x="4790" y="240" />
+        <di:waypoint x="4830" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07v89mj_di" bpmnElement="Flow_07v89mj">
+        <di:waypoint x="4650" y="240" />
+        <di:waypoint x="4690" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1oyh9za_di" bpmnElement="Flow_1oyh9za">
+        <di:waypoint x="4350" y="240" />
+        <di:waypoint x="4400" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11uo92z_di" bpmnElement="Flow_11uo92z">
+        <di:waypoint x="4195" y="240" />
+        <di:waypoint x="4250" y="240" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="4193" y="222" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05ax1xc_di" bpmnElement="Flow_05ax1xc">
+        <di:waypoint x="268" y="240" />
+        <di:waypoint x="300" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lksktp_di" bpmnElement="Flow_0lksktp">
+        <di:waypoint x="4500" y="240" />
+        <di:waypoint x="4550" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1mby97e_di" bpmnElement="Flow_1mby97e">
+        <di:waypoint x="1408" y="350" />
+        <di:waypoint x="1482" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mrmui2_di" bpmnElement="Flow_0mrmui2">
+        <di:waypoint x="3899" y="964" />
+        <di:waypoint x="4032" y="964" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ksyqls_di" bpmnElement="Flow_1ksyqls">
+        <di:waypoint x="2508" y="460" />
+        <di:waypoint x="3100" y="460" />
+        <di:waypoint x="3100" y="385" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10vy9w2_di" bpmnElement="Flow_10vy9w2">
+        <di:waypoint x="2368" y="720" />
+        <di:waypoint x="3100" y="720" />
+        <di:waypoint x="3100" y="645" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1um4j4h_di" bpmnElement="Flow_1um4j4h">
+        <di:waypoint x="2720" y="360" />
+        <di:waypoint x="3075" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fgmsn2_di" bpmnElement="Flow_0fgmsn2">
+        <di:waypoint x="3125" y="360" />
+        <di:waypoint x="3290" y="360" />
+        <di:waypoint x="3290" y="705" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wlyc60_di" bpmnElement="Flow_1wlyc60">
+        <di:waypoint x="3118" y="1400" />
+        <di:waypoint x="3290" y="1400" />
+        <di:waypoint x="3290" y="1225" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ginyzm_di" bpmnElement="Flow_1ginyzm">
+        <di:waypoint x="3240" y="1200" />
+        <di:waypoint x="3265" y="1200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xye2nl_di" bpmnElement="Flow_1xye2nl">
+        <di:waypoint x="3290" y="1175" />
+        <di:waypoint x="3290" y="755" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11lqq6r_di" bpmnElement="Flow_11lqq6r">
+        <di:waypoint x="400" y="240" />
+        <di:waypoint x="440" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19bttjg_di" bpmnElement="Flow_19bttjg">
+        <di:waypoint x="680" y="240" />
+        <di:waypoint x="740" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1q257q9_di" bpmnElement="Flow_1q257q9">
+        <di:waypoint x="540" y="240" />
+        <di:waypoint x="580" y="240" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

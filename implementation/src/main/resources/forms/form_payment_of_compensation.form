@@ -1,0 +1,73 @@
+{
+  "components": [
+    {
+      "text": "# Payment of compensation\n\n###Participant information:",
+      "type": "text",
+      "id": "Field_0mi75c1"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_13n6761",
+      "key": "participantName",
+      "disabled": true
+    },
+    {
+      "label": "Address: ",
+      "type": "textfield",
+      "id": "Field_0rmdsjl",
+      "key": "participantAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1bp6j9k",
+      "key": "participantEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_10uggg5",
+      "key": "participantPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Compensation amount",
+      "type": "text",
+      "id": "Field_0ubke1n"
+    },
+    {
+      "label": "Decided amount of compensation (in CZK):",
+      "type": "textfield",
+      "id": "Field_0cnep1f",
+      "key": "compensationPaymentAmount",
+      "disabled": true
+    },
+    {
+      "text": "## Compensation payment information",
+      "type": "text",
+      "id": "Field_0vszg8h"
+    },
+    {
+      "label": "Outgoing payment ID:",
+      "type": "textfield",
+      "id": "Field_1qj04wp",
+      "key": "participantCompensationPaymentId",
+      "description": "Fill in ID of outgoing payment.",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_0kd4bww",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

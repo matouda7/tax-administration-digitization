@@ -1,0 +1,39 @@
+{
+  "components": [
+    {
+      "text": "# Save information about obligation to create special records\n\nSave the information about the obligation to create special records, concretely the matter of special records and the duration, during which the special records must be recorded. ",
+      "type": "text",
+      "id": "Field_1ptjvwe"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "label": "Matter of special records:",
+      "type": "textarea",
+      "id": "Field_0zbvb1h",
+      "key": "specialRecordsMatter",
+      "description": "Fill in the matter of special records. "
+    },
+    {
+      "label": "Duration:",
+      "type": "number",
+      "id": "Field_1y4f9x8",
+      "key": "specialRecordsDuration",
+      "description": "Fill in the duration, during which the tax subject must save special records (in days).  "
+    }
+  ],
+  "type": "default",
+  "id": "Form_0jy2q2b",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

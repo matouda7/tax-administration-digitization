@@ -1,0 +1,66 @@
+{
+  "components": [
+    {
+      "text": "# Official decision creation\n\n## Start new decision creation process.",
+      "type": "text",
+      "id": "Field_1x1w1ts"
+    },
+    {
+      "text": "### Tax subject information\n\nFill in the information about the person, of which official decision is created.",
+      "type": "text",
+      "id": "Field_1r99a14"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_1w8vha0",
+      "key": "personName",
+      "description": "Fill in the person name (E.g. Jan Novák).",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_1ixxlx2",
+      "key": "personAddress",
+      "description": "Fill in the person address (E.g. Dietzova 529/8, Prague, Czech Republic).",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1mbmmq8",
+      "key": "personEmail",
+      "description": "Fill in the e-mail (E.g.  example@example.com).",
+      "validate": {
+        "required": true,
+        "validationType": "email"
+      }
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0npgdi9",
+      "key": "personPhone",
+      "description": "Fill in the phone number (E.g.  +420xxxxxxxxx).",
+      "validate": {
+        "required": true,
+        "validationType": "phone"
+      },
+      "properties": {}
+    }
+  ],
+  "type": "default",
+  "id": "form_start_official_decision_creation",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

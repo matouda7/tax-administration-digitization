@@ -1,0 +1,98 @@
+{
+  "components": [
+    {
+      "text": "# Collect special records\n\nFill in the special records that has been collected from tax subject. ",
+      "type": "text",
+      "id": "Field_0m58h1g"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Tax subject information",
+      "type": "text",
+      "id": "Field_0x03n45"
+    },
+    {
+      "label": "Person:",
+      "type": "textfield",
+      "id": "Field_03x57lq",
+      "key": "personName",
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_0gb02g3",
+      "key": "personAddress",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_0ncraut",
+      "key": "personEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0msrxj2",
+      "key": "personPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Special records information",
+      "type": "text",
+      "id": "Field_1a0kqu9"
+    },
+    {
+      "label": "Matter of special records:",
+      "type": "textarea",
+      "id": "Field_0zbvb1h",
+      "key": "specialRecordsMatter",
+      "disabled": true
+    },
+    {
+      "text": "### Special records",
+      "type": "text",
+      "id": "Field_1pjtt7v"
+    },
+    {
+      "label": "Special records:",
+      "type": "textarea",
+      "id": "Field_1ih3lzw",
+      "key": "specialRecords",
+      "description": "Fill in collected special records."
+    },
+    {
+      "text": "### Special records correctness\nDecide, whether the special records were captured correctly, based on the presented matter. ",
+      "type": "text",
+      "id": "Field_05lnsqi"
+    },
+    {
+      "label": "Special records are valid",
+      "type": "checkbox",
+      "id": "Field_1qfvup6",
+      "key": "correctSpecialRecords",
+      "description": "Check if special records are valid.",
+      "defaultValue": true
+    }
+  ],
+  "type": "default",
+  "id": "Form_0cbx5py",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

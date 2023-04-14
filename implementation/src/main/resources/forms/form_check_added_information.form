@@ -1,0 +1,161 @@
+{
+  "components": [
+    {
+      "text": "# Check added information\n\nCheck if added information is sufficient for final decision creation or not. ",
+      "type": "text",
+      "id": "Field_1aiyrkt"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Tax subject information",
+      "type": "text",
+      "id": "Field_06jzpul"
+    },
+    {
+      "label": "Person:",
+      "type": "textfield",
+      "id": "Field_03x57lq",
+      "key": "personName",
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_0gb02g3",
+      "key": "personAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_0ncraut",
+      "key": "personEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0msrxj2",
+      "key": "personPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Presented information",
+      "type": "text",
+      "id": "Field_0gcinvq"
+    },
+    {
+      "label": "Additional information:",
+      "type": "textarea",
+      "id": "Field_0mzkte6",
+      "key": "additionalInformation",
+      "disabled": true
+    },
+    {
+      "label": "Presented facts:",
+      "type": "textarea",
+      "id": "Field_0rn5d2k",
+      "key": "presentedFacts",
+      "disabled": true
+    },
+    {
+      "text": "###Testimonies information",
+      "type": "text",
+      "id": "Field_0u5g4fv",
+      "conditional": {
+        "hide": "=requiredTestimony = false"
+      }
+    },
+    {
+      "label": "Testimonies:",
+      "type": "textarea",
+      "id": "Field_1sl171i",
+      "key": "testimonies",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredTestimony = false"
+      }
+    },
+    {
+      "text": "### Expert report",
+      "type": "text",
+      "id": "Field_0ezs3ps",
+      "conditional": {
+        "hide": "=requiredExpertReport = false"
+      }
+    },
+    {
+      "label": "Expert report:",
+      "type": "textarea",
+      "id": "Field_0n39q37",
+      "key": "expertReport",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredExpertReport = false"
+      }
+    },
+    {
+      "text": "### Special records",
+      "type": "text",
+      "id": "Field_14fms4l",
+      "conditional": {
+        "hide": "=requiredSpecialRecords = false"
+      }
+    },
+    {
+      "label": "Special records:",
+      "type": "textarea",
+      "id": "Field_1ih3lzw",
+      "key": "specialRecords",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredSpecialRecords = false"
+      }
+    },
+    {
+      "text": "### Proceedings participant contributions",
+      "type": "text",
+      "id": "Field_0o6jqnp",
+      "conditional": {
+        "hide": "=requiredThirdPersonParticipation = false"
+      }
+    },
+    {
+      "label": "Proceedings participant contributions:",
+      "type": "textarea",
+      "id": "Field_096uj1f",
+      "key": "participantContributions",
+      "disabled": true,
+      "conditional": {
+        "hide": "=requiredThirdPersonParticipation = false"
+      }
+    },
+    {
+      "text": "## Information sufficiency\n\nDecide whether added information is sufficient to  official decision creation.",
+      "type": "text",
+      "id": "Field_18snqhj"
+    },
+    {
+      "label": "Required tax negotiation",
+      "type": "checkbox",
+      "id": "Field_1sanflj",
+      "key": "requiredTaxNegotiation",
+      "description": "Check if tax negotiation is required to create official decision."
+    }
+  ],
+  "type": "default",
+  "id": "Form_0zy1s3h",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

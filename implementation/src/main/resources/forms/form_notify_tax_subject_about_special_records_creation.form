@@ -1,0 +1,80 @@
+{
+  "components": [
+    {
+      "text": "# Notify tax subject about obligation to create special records\n\nSend notification to tax subject to create the special records starting by the day of receiving the obligation. ",
+      "type": "text",
+      "id": "Field_0ylta1u"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Tax subject information",
+      "type": "text",
+      "id": "Field_0x03n45"
+    },
+    {
+      "label": "Person:",
+      "type": "textfield",
+      "id": "Field_03x57lq",
+      "key": "personName",
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_0gb02g3",
+      "key": "personAddress",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_0ncraut",
+      "key": "personEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0msrxj2",
+      "key": "personPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Special records information",
+      "type": "text",
+      "id": "Field_1a0kqu9"
+    },
+    {
+      "label": "Matter of special records:",
+      "type": "textarea",
+      "id": "Field_0zbvb1h",
+      "key": "specialRecordsMatter",
+      "disabled": true
+    },
+    {
+      "label": "Duration (in days):",
+      "type": "number",
+      "id": "Field_1y4f9x8",
+      "key": "specialRecordsDuration",
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "Form_0jy2q2b",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

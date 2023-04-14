@@ -1,0 +1,87 @@
+{
+  "components": [
+    {
+      "text": "# Notify tax subject about testimony\n\nNotify tax subject about testimony creation and the matter of testimony",
+      "type": "text",
+      "id": "Field_03f7911"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Witness information",
+      "type": "text",
+      "id": "Field_1o32j3b"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_1w8vha0",
+      "key": "witnessName",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_1ixxlx2",
+      "key": "witnessAddress",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1mbmmq8",
+      "key": "witnessEmail",
+      "validate": {
+        "required": false,
+        "pattern": "[a-z0-9]+@[a-z]+\\.[a-z]{2,3}"
+      },
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0npgdi9",
+      "key": "witnessPhone",
+      "validate": {
+        "required": false,
+        "pattern": "^\\+\\d{12}(\\d{2})?$"
+      },
+      "disabled": true
+    },
+    {
+      "text": "### Reasons of testimony creation",
+      "type": "text",
+      "id": "Field_12enrng"
+    },
+    {
+      "label": "Matter of testimony:",
+      "type": "textarea",
+      "id": "Field_0rgf3kg",
+      "key": "matterOfTestimony",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "Form_0llu130",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

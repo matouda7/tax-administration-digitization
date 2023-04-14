@@ -1,0 +1,71 @@
+{
+  "components": [
+    {
+      "text": "# Summons participant\nThe summon of following participant is necessary.\n",
+      "type": "text",
+      "id": "Field_0mi75c1"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "###Summoned participant information",
+      "type": "text",
+      "id": "Field_0e5arlr"
+    },
+    {
+      "label": "Name:",
+      "type": "textfield",
+      "id": "Field_13n6761",
+      "key": "participantName",
+      "disabled": true
+    },
+    {
+      "label": "Address: ",
+      "type": "textfield",
+      "id": "Field_0rmdsjl",
+      "key": "participantAddress",
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_1bp6j9k",
+      "key": "participantEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_10uggg5",
+      "key": "participantPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Result of summons\n\nFill in the result of participant summons.",
+      "type": "text",
+      "id": "Field_1nnqjyd"
+    },
+    {
+      "label": "Participant attachment is required.",
+      "type": "checkbox",
+      "id": "Field_0sjyv51",
+      "key": "requiredParticipantAttachment",
+      "defaultValue": false,
+      "description": "Check if participant does not respond to summons and the attachment is required."
+    }
+  ],
+  "type": "default",
+  "id": "Form_0kd4bww",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

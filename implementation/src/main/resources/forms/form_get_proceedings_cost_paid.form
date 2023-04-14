@@ -1,0 +1,32 @@
+{
+  "components": [
+    {
+      "text": "# Payment of proceedings cost\n\nSave the proceedings cost payment information.",
+      "type": "text",
+      "id": "Field_13ustch"
+    },
+    {
+      "label": "Official decision id:",
+      "type": "textfield",
+      "id": "Field_01quix0",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "label": "Incoming payment ID:",
+      "type": "textfield",
+      "id": "Field_0oqnr6k",
+      "key": "proceedingCostPaymentId",
+      "description": "Fill in the ID of  incoming payment."
+    }
+  ],
+  "type": "default",
+  "id": "form_get_proceedings_cost_paid",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

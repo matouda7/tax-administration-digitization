@@ -1,0 +1,37 @@
+{
+  "components": [
+    {
+      "text": "# Expert report creation\n\nCreate expert report required to determine tax and create official decision. ",
+      "type": "text",
+      "id": "Field_0gr0nlj"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Expert report",
+      "type": "text",
+      "id": "Field_1nojcdr"
+    },
+    {
+      "label": "Expert report:",
+      "type": "textarea",
+      "id": "Field_0n39q37",
+      "key": "expertReport",
+      "description": "Fill in the expert report. "
+    }
+  ],
+  "type": "default",
+  "id": "Form_0m7zvhl",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}

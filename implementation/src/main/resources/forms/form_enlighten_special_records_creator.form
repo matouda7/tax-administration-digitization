@@ -1,0 +1,80 @@
+{
+  "components": [
+    {
+      "text": "# Enlighten special records creator\n\nInstruct tax subject to capture special records correctly. ",
+      "type": "text",
+      "id": "Field_06qrigw"
+    },
+    {
+      "label": "Decision ID:",
+      "type": "textfield",
+      "id": "Field_13w8oik",
+      "key": "decisionId",
+      "disabled": true
+    },
+    {
+      "text": "### Tax subject information",
+      "type": "text",
+      "id": "Field_0x03n45"
+    },
+    {
+      "label": "Person:",
+      "type": "textfield",
+      "id": "Field_03x57lq",
+      "key": "personName",
+      "disabled": true
+    },
+    {
+      "label": "Address:",
+      "type": "textfield",
+      "id": "Field_0gb02g3",
+      "key": "personAddress",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "E-mail:",
+      "type": "textfield",
+      "id": "Field_0ncraut",
+      "key": "personEmail",
+      "disabled": true
+    },
+    {
+      "label": "Phone number:",
+      "type": "textfield",
+      "id": "Field_0msrxj2",
+      "key": "personPhone",
+      "disabled": true
+    },
+    {
+      "text": "### Special records information",
+      "type": "text",
+      "id": "Field_1a0kqu9"
+    },
+    {
+      "label": "Matter of special records:",
+      "type": "textarea",
+      "id": "Field_0zbvb1h",
+      "key": "specialRecordsMatter",
+      "disabled": true
+    },
+    {
+      "label": "Duration (in days):",
+      "type": "number",
+      "id": "Field_1y4f9x8",
+      "key": "specialRecordsDuration",
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "Form_0m8x9n2",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "schemaVersion": 7
+}
