@@ -1,6 +1,6 @@
 # To-be analysis
 
-The To-be analysis is focused on the analysis of the proposed state. The to-be analysis uses BPMN as a tool to capture the state of the Tax administration process after the completion of the digitization. To show the state the detailed BPMN model divaded into [BPMN model part 1](https://github.com/matouda7/tax-administration-digitization/blob/main/to-be-analysis/BPMN_level_2_part1.png) and [BPMN model part 2](https://github.com/matouda7/tax-administration-digitization/blob/main/to-be-analysis/BPMN_level_2_part2.png) is presented. 
+The To-be analysis is focused on the analysis of the proposed state. The to-be analysis uses BPMN as a tool to capture the state of the Tax administration process after the completion of the digitization. To show the state the detailed [BPMN model](https://github.com/matouda7/tax-administration-digitization/blob/main/to-be-analysis/BPMN_level_2.png) is presented. 
 
 ---
 
